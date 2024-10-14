@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Sản Phẩm</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="product-management">
+        <div class="product-header">
+            <h2>Danh Mục Mỹ Phẩm</h2>
+        </div>
+        <div class="product-actions">
+            <a href="/add-product" class="btn btn-primary">Thêm Sản Phẩm</a>
+        </div>
+        <div class="product-list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Thương hiệu</th>
+                        <th>Loại</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.brand }}</td>
+                            <td>{{ product.category }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>{{ product.stock }}</td>
+                            <td>
+                                <a href="/edit_product.html/{{ product._id }}" class="btn btn-warning">Sửa</a>
+                                <a href="/delete-product/{{ product._id }}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

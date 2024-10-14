@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Địa Điểm</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="location-management">
+        <div class="location-header">
+            <h2>Quản Lý Địa Điểm Khách Hàng</h2>
+        </div>
+        <div class="location-actions">
+            <a href="/add-location" class="btn btn-primary">Thêm Địa Điểm</a>
+        </div>
+        <div class="location-list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tên địa điểm</th>
+                        <th>Địa chỉ</th>
+                        <th>Ghi chú</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for location in locations %}
+                        <tr>
+                            <td>{{ location.city }}</td>  <!-- Hiển thị city -->
+                            <td>{{ location.address }}</td>
+                            <td>{{ location.type }}</td>  <!-- Hiển thị type -->
+                            <td>
+                                <a href="/edit-location/{{ location._id }}" class="btn btn-warning">Sửa</a>
+                                <button class="btn btn-danger" onclick="deleteLocation('{{ location._id }}');">Xóa</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function deleteLocation(locationId) {
+            if (confirm('Bạn có chắc chắn muốn xóa địa điểm này?')) {
+                // Gửi request xóa dữ liệu đến server
+                $.ajax({
+                    url: '/delete_location/' + locationId,
+                    method: 'POST',
+                    success: function(response){
+                        // Cập nhật bảng danh sách
+                        location.reload();
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

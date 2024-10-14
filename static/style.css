@@ -1,0 +1,275 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: #337ab7;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-name {
+    font-size: 1.5em;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info p {
+    margin: 0 10px 0 0;
+}
+
+.user-info img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+}
+
+.functions-list li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.functions-list a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.functions-list li.active a {
+    background-color: #337ab7;
+}
+
+.functions-list a:hover {
+    background-color: #444;
+}
+
+.main-content {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    display: flex; /* Enable flexbox layout for main-content */
+    flex-direction: column; /* Align items vertically */
+}
+
+.content {
+    flex: 1; /* Allow content to expand to fill available space */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+#register-form {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+/* Style cho bảng danh sách khách hàng */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f0f0f0;
+}
+
+/* Style cho nút */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Style cho form */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+}
+
+/* Style cho phần nội dung chính */
+.customer-actions {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.customer-list {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#customer-management {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.table th, .table td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f0f0f0;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.product-management {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.product-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.product-actions {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.product-list {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.location-management {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.location-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.location-actions {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.location-list {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('/static/images/register2.jpg'); /* Đường dẫn đến bức ảnh bạn đã tải về */
+            background-size: cover; /* Đảm bảo ảnh bao phủ toàn bộ màn hình */
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Chiều cao 100% của viewport */
+            color: black; /* Màu chữ đen cho tất cả */
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.5); /* Nền trắng trong suốt */
+            border: 2px solid black; /* Viền đen bao quanh */
+            border-radius: 10px; /* Bo tròn góc */
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Đổ bóng */
+            width: 300px; /* Chiều rộng tối đa của form */
+            text-align: center; /* Căn giữa nội dung bên trong */
+            overflow: hidden; /* Ngăn chặn tràn */
+        }
+
+        h1 {
+            color: black; /* Màu chữ đen cho tiêu đề */
+        }
+
+        label {
+            display: block; /* Đưa các label thành dòng mới */
+            margin: 5px 0; /* Giảm khoảng cách giữa label và ô nhập */
+            color: black; /* Màu chữ đen cho label */
+        }
+
+        input[type="text"], input[type="password"] {
+        width: 100%; /* Chiếm toàn bộ chiều rộng */
+        padding: 10px; /* Tạo khoảng cách bên trong */
+        margin-bottom: 10px; /* Khoảng cách dưới ô nhập */
+        border: 1px solid black; /* Viền đen */
+        border-radius: 5px; /* Bo tròn góc */
+        background-color: rgba(255, 255, 255, 0.8); /* Nền trắng trong suốt */
+        color: black; /* Màu chữ đen cho ô nhập */
+        box-sizing: border-box; /* Đảm bảo padding và border được tính trong kích thước */
+         }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50; /* Màu nền nút */
+            color: black; /* Màu chữ nút */
+            border: none; /* Không viền */
+            border-radius: 5px; /* Bo tròn góc */
+            cursor: pointer; /* Hiển thị con trỏ tay khi di chuột qua */
+            width: 100%; /* Chiếm toàn bộ chiều rộng */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Màu nền khi hover */
+        }
+
+        a {
+            display: block; /* Đưa liên kết thành dòng mới */
+            margin-top: 10px; /* Tạo khoảng cách trên liên kết */
+            color: black; /* Màu chữ đen cho liên kết */
+            text-decoration: none; /* Không gạch chân */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Gạch chân khi hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Đăng Nhập</h1>
+        <form method="POST">
+            <label for="username">Tên người dùng:</label>
+            <input type="text" name="username" required>
+            <label for="password">Mật khẩu:</label>
+            <input type="password" name="password" required>
+            <button type="submit">Đăng Nhập</button>
+        </form>
+        <a href="/">Quay lại trang chủ</a>
+    </div>
+</body>
+</html>

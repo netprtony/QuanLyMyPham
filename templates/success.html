@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký Thành Công</title>
+</head>
+<body>
+    <h1>Đăng Ký Thành Công!</h1>
+    <h2>Thông tin khách hàng đã đăng ký:</h2>
+    <ul>
+        {% for customer in customers %}
+            <li>{{ customer.name }} - {{ customer.email }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Quay lại trang chủ</a>
+</body>
+</html>

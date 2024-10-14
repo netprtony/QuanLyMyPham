@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Khách Hàng</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Danh Sách Khách Hàng</h1>
+    <a href="/add-customer" class="btn btn-primary">Thêm Khách Hàng</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên</th>
+                <th>Địa chỉ</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, customer in enumerate(customers) %}
+                <tr>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.address.street }}, {{ customer.address.city }}, {{ customer.address.postal_code }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>
+                        <a href="/edit-customer/{{ customer._id }}" class="btn btn-warning">Sửa</a>
+                        <button class="btn btn-danger" onclick="deleteCustomer('{{ customer._id }}');">Xóa</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        function deleteCustomer(customerId) {
+    if (confirm('Bạn có chắc chắn muốn xóa khách hàng này?')) {
+        // Gửi request xóa dữ liệu đến server
+        $.ajax({
+            url: '/delete_customer/' + customerId,
+            method: 'POST',  // Đảm bảo phương thức là POST
+            success: function(response){
+                // Cập nhật bảng danh sách
+                location.reload();
+            }
+        });
+    }
+}
+    </script>
+</body>
+</html>
