@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from pymongo import MongoClient
 import os
 
-client = MongoClient('mongodb://localhost:27017/')
-db = client['local']
+client = MongoClient('mongodb://localhost:27017')
+db = client['QL_CosmeticsStore']
 customers_collection = db['QL_CosmeticsStore.Customer']
 delivery_collection = db['QL_CosmeticsStore.Delivery']
 products_collection = db['QL_CosmeticsStore.Product']
