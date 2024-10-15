@@ -1,14 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from pymongo import MongoClient
-import os
+from bson.objectid import ObjectId
 
 client = MongoClient('mongodb://localhost:27017')
 db = client['QL_CosmeticsStore']
-customers_collection = db['QL_CosmeticsStore.Customer']
-delivery_collection = db['QL_CosmeticsStore.Delivery']
-products_collection = db['QL_CosmeticsStore.Product']
-order_collection = db['QL_CosmeticsStore.Order']
-locations_collection = db['QL_CosmeticsStore.Delivery']
+customers_collection = db['Customer']
+delivery_collection = db['Delivery']
+products_collection = db['Product']
+order_collection = db['Order']
+locations_collection = db['Delivery']
 
 
 app = Flask(__name__)
@@ -78,26 +78,64 @@ def add_customer():
         })
         return redirect(url_for('customer_list'))
     return render_template('add_customer.html')
+# sửa khách hàng
+# @app.route('/edit-customer/<int:customer_id>', methods=['GET', 'POST'])
+# def edit_customer(customer_id):
+#     # Lấy dữ liệu khách hàng từ MongoDB
+#     customer = customers_collection.find_one({'_id': customer_id})
+#     if request.method == 'POST':
+#         customer['name'] = request.form['name']
+#         customer['address'] = request.form['address']
+#         customer['phone_number'] = request.form['phone_number']
+#         customer['email'] = request.form['email']
+#         # Cập nhật dữ liệu khách hàng trong MongoDB
+#         customers_collection.update_one({'_id': customer_id}, {'$set': customer})
+#         return redirect(url_for('customer_list'))
+#     return render_template('edit_customer.html', customer=customer)
 
-@app.route('/edit-customer/<int:customer_id>', methods=['GET', 'POST'])
-def edit_customer(customer_id):
-    # Lấy dữ liệu khách hàng từ MongoDB
-    customer = customers_collection.find_one({'_id': customer_id})
-    if request.method == 'POST':
-        customer['name'] = request.form['name']
-        customer['address'] = request.form['address']
-        customer['phone_number'] = request.form['phone_number']
-        customer['email'] = request.form['email']
-        # Cập nhật dữ liệu khách hàng trong MongoDB
-        customers_collection.update_one({'_id': customer_id}, {'$set': customer})
-        return redirect(url_for('customer_list'))
-    return render_template('edit_customer.html', customer=customer)
+# @app.route('/delete_customer/<int:customer_id>', methods=['POST'])
+# def delete_customer(customer_id):
+#     # Xóa dữ liệu khách hàng trong MongoDB
+#     customers_collection.delete_one({'_id': customer_id})
+#     return 'Success'
 
-@app.route('/delete_customer/<int:customer_id>', methods=['POST'])
+@app.route('/edit_customer')
+def edit_customer_page():
+    return render_template('edit_customer.html')
+
+@app.route('/customer/<customer_id>', methods=['GET'])
+def get_customer(customer_id):
+    customer = customers_collection.find_one({"_id": customer_id})
+    if customer:
+        return jsonify(customer), 200
+    else:
+        return jsonify({"error": "Khách hàng không tồn tại."}), 404
+    
+
+@app.route('/update_customer/<customer_id>', methods=['PUT'])
+def update_customer(customer_id):
+    data = request.get_json()  # Lấy dữ liệu từ yêu cầu
+    updated_data = {
+        "name": data.get("name"),
+        "address": data.get("address"),
+        "phone": data.get("phone"),
+        "email": data.get("email")
+    }
+    
+    result = customers_collection.update_one({"_id": customer_id}, {"$set": updated_data})
+    if result.modified_count > 0:
+        return jsonify({"message": "Thông tin khách hàng đã được cập nhật thành công."}), 200
+    else:
+        return jsonify({"message": "Không tìm thấy khách hàng hoặc không có thay đổi."}), 404
+
+# xóa khách hàng
+@app.route('/delete_customer/<customer_id>', methods=['DELETE'])
 def delete_customer(customer_id):
-    # Xóa dữ liệu khách hàng trong MongoDB
-    customers_collection.delete_one({'_id': customer_id})
-    return 'Success'
+    result = customers_collection.delete_one({"_id": customer_id})  # Sử dụng ObjectId nếu ID là ObjectId
+    if result.deleted_count > 0:
+        return jsonify({"message": "Khách hàng đã được xóa thành công."}), 200
+    else:
+        return jsonify({"message": "Không tìm thấy khách hàng."}), 404
 
 #####Products###
 @app.route('/products')
@@ -213,4 +251,4 @@ def delivery_tracking():
     return render_template('delivery_tracking.html', delivery_status='Đang giao')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)

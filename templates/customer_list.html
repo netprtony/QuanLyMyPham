@@ -28,27 +28,34 @@
                     <td>{{ customer.phone }}</td>
                     <td>{{ customer.email }}</td>
                     <td>
-                        <a href="/edit-customer/{{ customer._id }}" class="btn btn-warning">Sửa</a>
-                        <button class="btn btn-danger" onclick="deleteCustomer('{{ customer._id }}');">Xóa</button>
+                        <a href="/edit_customer?id={{ customer.customer_id }}" class="btn btn-warning">Sửa</a>
+                        <button class="btn btn-danger" onclick="deleteCustomer(this)" data-id="{{ customer.customer_id }}">Xóa</button>
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
     <script>
-        function deleteCustomer(customerId) {
-    if (confirm('Bạn có chắc chắn muốn xóa khách hàng này?')) {
-        // Gửi request xóa dữ liệu đến server
-        $.ajax({
-            url: '/delete_customer/' + customerId,
-            method: 'POST',  // Đảm bảo phương thức là POST
-            success: function(response){
-                // Cập nhật bảng danh sách
-                location.reload();
+        function deleteCustomer(button) {
+            const customerId = button.getAttribute('data-id');  // Lấy ID từ thuộc tính data-id
+            if (confirm("Bạn có chắc chắn muốn xóa khách hàng này?")) {
+                fetch(`/delete_customer/${customerId}`, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Khách hàng đã được xóa thành công.");
+                        // Xóa dòng khách hàng khỏi bảng
+                        button.closest('tr').remove(); // Xóa dòng tương ứng trong bảng
+                    } else {
+                        alert("Có lỗi xảy ra khi xóa khách hàng.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
             }
-        });
-    }
-}
+        }
     </script>
 </body>
 </html>
