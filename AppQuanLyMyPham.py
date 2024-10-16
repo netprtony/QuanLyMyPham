@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session
 from pymongo import MongoClient
-from bson.objectid import ObjectId
+
 
 client = MongoClient('mongodb://localhost:27017')
 db = client['QL_CosmeticsStore']
@@ -99,43 +99,10 @@ def add_customer():
 #     customers_collection.delete_one({'_id': customer_id})
 #     return 'Success'
 
-@app.route('/edit_customer')
-def edit_customer_page():
-    return render_template('edit_customer.html')
 
-@app.route('/customer/<customer_id>', methods=['GET'])
-def get_customer(customer_id):
-    customer = customers_collection.find_one({"_id": customer_id})
-    if customer:
-        return jsonify(customer), 200
-    else:
-        return jsonify({"error": "Khách hàng không tồn tại."}), 404
-    
-
-@app.route('/update_customer/<customer_id>', methods=['PUT'])
-def update_customer(customer_id):
-    data = request.get_json()  # Lấy dữ liệu từ yêu cầu
-    updated_data = {
-        "name": data.get("name"),
-        "address": data.get("address"),
-        "phone": data.get("phone"),
-        "email": data.get("email")
-    }
-    
-    result = customers_collection.update_one({"_id": customer_id}, {"$set": updated_data})
-    if result.modified_count > 0:
-        return jsonify({"message": "Thông tin khách hàng đã được cập nhật thành công."}), 200
-    else:
-        return jsonify({"message": "Không tìm thấy khách hàng hoặc không có thay đổi."}), 404
 
 # xóa khách hàng
-@app.route('/delete_customer/<customer_id>', methods=['DELETE'])
-def delete_customer(customer_id):
-    result = customers_collection.delete_one({"_id": customer_id})  # Sử dụng ObjectId nếu ID là ObjectId
-    if result.deleted_count > 0:
-        return jsonify({"message": "Khách hàng đã được xóa thành công."}), 200
-    else:
-        return jsonify({"message": "Không tìm thấy khách hàng."}), 404
+
 
 #####Products###
 @app.route('/products')
