@@ -10,6 +10,16 @@
 
     <div class="customer-actions">
         <a href="/add-customer" class="btn btn-primary">Thêm Khách Hàng</a>
+        <span class="filter-label">Chọn thành phố:</span>
+        <form method="POST" action="{{ url_for('customer_list') }}" class="filter-form">
+            <select name="selected_location" id="selected_location" class="form-select">
+                <option value="">-- Tất cả thành phố --</option>
+                {% for location in locations %}
+                    <option value="{{ location.location_id }}">{{ location.address.city }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-info">Lọc</button>
+        </form>
     </div>
     <div class="customer-list">
         <table class="table">
@@ -25,10 +35,10 @@
             <tbody>
                 {% for index, customer in enumerate(customers) %}
                     <tr>
-                        <td>{{ customer.name }}</td>
-                        <td>{{ customer.address.street }}, {{ customer.address.city }}, {{ customer.address.postal_code }}</td>
-                        <td>{{ customer.phone }}</td>
-                        <td>{{ customer.email }}</td>
+                        <td>{{ customer['name'] }}</td>
+                        <td>{{ customer.address.street }}, {{ customer['address']['city'] }}, {{ customer.address.postal_code }}</td>
+                        <td>{{ customer['phone'] }}</td>
+                        <td>{{ customer['email'] }}</td>
                         <td>
                             <a href="/edit_customer?id={{ customer['_id']['$oid'] }}" class="btn btn-warning">Sửa</a>
                             <button class="btn btn-danger" onclick="deleteCustomer(this)" data-id="{{ customer.customer_id }}">Xóa</button>

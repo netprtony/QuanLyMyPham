@@ -273,3 +273,21 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+.customer-actions {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Khoảng cách phía dưới */
+}
+
+.customer-header .btn {
+    margin-right: 15px; /* Khoảng cách giữa các nút */
+}
+
+.filter-label {
+    margin-right: 10px; /* Khoảng cách giữa nhãn và dropdown */
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+}

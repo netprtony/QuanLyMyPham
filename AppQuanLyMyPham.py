@@ -59,7 +59,20 @@ def customer_list():
     customers = list(customers_collection.find())
     return render_template('customer_list.html', customers=customers, enumerate=enumerate)
 
-# ... (các route và hàm khác) ...
+@app.route('/customers', methods=['GET', 'POST'])
+def customer_list():
+    if request.method == 'POST':
+        selected_city = request.form.get('city')
+        # Lọc khách hàng theo thành phố
+        customers = customers_collection.find({'address.city': selected_city})
+    else:
+        # Nếu không có lọc, lấy tất cả khách hàng
+        customers = customers_collection.find()
+    
+    # Lấy danh sách các thành phố từ cơ sở dữ liệu (nếu có)
+    cities = customers_collection.distinct('address.city')
+    
+    return render_template('customer_list.html', customers=customers, locations=locations)
 
 @app.route('/add-customer', methods=['GET', 'POST'])
 def add_customer():
