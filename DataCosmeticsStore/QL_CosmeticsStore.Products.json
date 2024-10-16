@@ -1,0 +1,284 @@
+[{
+  "_id": {
+    "$oid": "66daea3540e9579408937121"
+  },
+  "product_id": "PROD001",
+  "name": "Facial Cleanser",
+  "category": "Skincare",
+  "brand": "Olay",
+  "price": 250000,
+  "stock": 100,
+  "supplier_id": "SUP001",
+  "description": "Sữa rửa mặt làm sạch da, dưỡng ẩm"
+},
+{
+  "_id": {
+    "$oid": "66daea3540e9579408937122"
+  },
+  "product_id": "PROD002",
+  "name": "Lipstick",
+  "category": "Makeup",
+  "brand": "MAC",
+  "price": 150000,
+  "stock": 200,
+  "supplier_id": "SUP002",
+  "description": "Son môi màu đỏ, giữ màu lâu"
+},
+{
+  "_id": {
+    "$oid": "66daea3540e9579408937123"
+  },
+  "product_id": "PROD003",
+  "name": "Sunscreen",
+  "category": "Skincare",
+  "brand": "Neutrogena",
+  "price": 180000,
+  "stock": 150,
+  "supplier_id": "SUP001",
+  "description": "Kem chống nắng SPF 50+"
+},
+{
+  "_id": {
+    "$oid": "66daea3540e9579408937124"
+  },
+  "product_id": "PROD004",
+  "name": "Moisturizer",
+  "category": "Skincare",
+  "brand": "Nars",
+  "price": 320000,
+  "stock": 120,
+  "supplier_id": "SUP003",
+  "description": "Kem dưỡng ẩm ban đêm cho da khô"
+},
+{
+  "_id": {
+    "$oid": "66daea3540e9579408937125"
+  },
+  "product_id": "PROD005",
+  "name": "Shampoo",
+  "category": "Haircare",
+  "brand": "The Body Shop",
+  "price": 140000,
+  "stock": 300,
+  "supplier_id": "SUP004",
+  "description": "Dầu gội dành cho tóc khô"
+},
+{
+  "_id": {
+    "$oid": "66daea3540e9579408937126"
+  },
+  "product_id": "PROD006",
+  "name": "Conditioner",
+  "category": "Haircare",
+  "brand": "Clinique",
+  "price": 130000,
+  "stock": 280,
+  "supplier_id": "SUP004",
+  "description": "Dầu xả dưỡng ẩm cho tóc"
+},
+{
+  "_id": {
+    "$oid": "66daea3540e9579408937127"
+  },
+  "product_id": "PROD007",
+  "name": "Face Mask",
+  "category": "Skincare",
+  "brand": "SK-II",
+  "price": 50000,
+  "stock": 500,
+  "supplier_id": "SUP005",
+  "description": "Mặt nạ dưỡng da cung cấp độ ẩm"
+},
+{
+  "_id": {
+    "$oid": "66daea3540e9579408937128"
+  },
+  "product_id": "PROD008",
+  "name": "Body Lotion",
+  "category": "Skincare",
+  "brand": "Estee Lauder",
+  "price": 200000,
+  "stock": 180,
+  "supplier_id": "SUP006",
+  "description": "Kem dưỡng thể, làm mịn da"
+},
+{
+  "_id": {
+    "$oid": "66daea3540e9579408937129"
+  },
+  "product_id": "PROD009",
+  "name": "Eyeliner",
+  "category": "Makeup",
+  "brand": "Maybelline NY",
+  "price": 120000,
+  "stock": 220,
+  "supplier_id": "SUP002",
+  "description": "Bút kẻ mắt chống lem"
+},
+{
+  "_id": {
+    "$oid": "66daea3540e957940893712a"
+  },
+  "product_id": "PROD010",
+  "name": "Hair Oil",
+  "category": "Haircare",
+  "brand": "Shiseido",
+  "price": 300000,
+  "stock": 130,
+  "supplier_id": "SUP007",
+  "description": "Tinh dầu dưỡng tóc mềm mượt"
+},
+{
+  "_id": {
+    "$oid": "66de598f328b007ec8cf7dba"
+  },
+  "product_id": "New ID",
+  "product_name": "Detox",
+  "category": {
+    "category_id": "Detoxs",
+    "category_name": "Detoxss"
+  },
+  "price": 500000,
+  "quantity": 60,
+  "description": "Tẩy tế bào chết"
+},
+{
+  "_id": {
+    "$oid": "66de598f328b007ec8cf7dbc"
+  },
+  "product_id": "PROD001",
+  "product_name": "Moisturizing Cream",
+  "category": {
+    "category_id": "Skincare",
+    "category_name": "Skincare Products"
+  },
+  "price": 300000,
+  "quantity": 100,
+  "description": "Kem dưỡng ẩm cho da"
+},
+{
+  "_id": {
+    "$oid": "66de598f328b007ec8cf7dbd"
+  },
+  "product_id": "PROD002",
+  "product_name": "Sunscreen SPF 50",
+  "category": {
+    "category_id": "Skincare",
+    "category_name": "Skincare Products"
+  },
+  "price": 250000,
+  "quantity": 80,
+  "description": "Kem chống nắng bảo vệ da"
+},
+{
+  "_id": {
+    "$oid": "66de598f328b007ec8cf7dbe"
+  },
+  "product_id": "PROD003",
+  "product_name": "Vitamin C Serum",
+  "category": {
+    "category_id": "Skincare",
+    "category_name": "Skincare Products"
+  },
+  "price": 400000,
+  "quantity": 50,
+  "description": "Serum vitamin C làm sáng da"
+},
+{
+  "_id": {
+    "$oid": "66de598f328b007ec8cf7dbf"
+  },
+  "product_id": "PROD004",
+  "product_name": "Hydrating Face Mask",
+  "category": {
+    "category_id": "Skincare",
+    "category_name": "Skincare Products"
+  },
+  "price": 150000,
+  "quantity": 75,
+  "description": "Mặt nạ cấp nước cho da"
+},
+{
+  "_id": {
+    "$oid": "66de598f328b007ec8cf7dc0"
+  },
+  "product_id": "PROD005",
+  "product_name": "Charcoal Face Wash",
+  "category": {
+    "category_id": "Cleansers",
+    "category_name": "Cleansing Products"
+  },
+  "price": 120000,
+  "quantity": 90,
+  "description": "Sữa rửa mặt than hoạt tính"
+},
+{
+  "_id": {
+    "$oid": "66de598f328b007ec8cf7dc1"
+  },
+  "product_id": "PROD006",
+  "product_name": "Exfoliating Scrub",
+  "category": {
+    "category_id": "Exfoliants",
+    "category_name": "Exfoliating Products"
+  },
+  "price": 220000,
+  "quantity": 70,
+  "description": "Tẩy tế bào chết cho da mặt"
+},
+{
+  "_id": {
+    "$oid": "66de598f328b007ec8cf7dc2"
+  },
+  "product_id": "PROD007",
+  "product_name": "Retinol Cream",
+  "category": {
+    "category_id": "Anti-aging",
+    "category_name": "Anti-aging Products"
+  },
+  "price": 500000,
+  "quantity": 40,
+  "description": "Kem chống lão hóa da"
+},
+{
+  "_id": {
+    "$oid": "66de598f328b007ec8cf7dc3"
+  },
+  "product_id": "PROD008",
+  "product_name": "Nourishing Hair Oil",
+  "category": {
+    "category_id": "Haircare",
+    "category_name": "Haircare Products"
+  },
+  "price": 350000,
+  "quantity": 60,
+  "description": "Dầu dưỡng tóc phục hồi"
+},
+{
+  "_id": {
+    "$oid": "66de598f328b007ec8cf7dc4"
+  },
+  "product_id": "PROD009",
+  "product_name": "Lip Balm",
+  "category": {
+    "category_id": "Cosmetics",
+    "category_name": "Cosmetics Products"
+  },
+  "price": 75000,
+  "quantity": 150,
+  "description": "Son dưỡng môi"
+},
+{
+  "_id": {
+    "$oid": "66de598f328b007ec8cf7dc5"
+  },
+  "product_id": "PROD010",
+  "product_name": "Body Lotion",
+  "category": {
+    "category_id": "Bodycare",
+    "category_name": "Bodycare Products"
+  },
+  "price": 200000,
+  "quantity": 80,
+  "description": "Sữa dưỡng thể cho cơ thể"
+}]

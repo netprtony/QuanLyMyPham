@@ -1,0 +1,342 @@
+[{
+  "_id": {
+    "$oid": "66dae46740e9579408937100"
+  },
+  "customer_id": "CUST001",
+  "name": "Nguyen Van Ngoc",
+  "email": "vanngoc@gmail.com",
+  "phone": "0123456789",
+  "gender": "male",
+  "age": 30,
+  "address": {
+    "street": "123 Le Loi",
+    "city": "Ho Chi Minh",
+    "postal_code": "700000"
+  },
+  "preferred_delivery_location": "LOC004",
+  "role": "Normal"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937101"
+  },
+  "customer_id": "CUST002",
+  "name": "Le Thi Trang",
+  "email": "letrang@gmail.com",
+  "phone": "0987654321",
+  "gender": "female",
+  "age": 25,
+  "address": {
+    "street": "456 Phan Dinh Phung",
+    "city": "Da Nang",
+    "postal_code": "550000"
+  },
+  "preferred_delivery_location": "LOC004",
+  "role": "Normal"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937102"
+  },
+  "customer_id": "CUST003",
+  "name": "Tran Van Thanh",
+  "email": "tranthanh@gmail.com",
+  "phone": "0123987456",
+  "gender": "male",
+  "age": 28,
+  "address": {
+    "street": "789 Tran Hung Dao",
+    "city": "Hanoi",
+    "postal_code": "100000"
+  },
+  "preferred_delivery_location": "LOC004",
+  "role": "Normal"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937103"
+  },
+  "customer_id": "CUST004",
+  "name": "Pham Thi Tien",
+  "email": "phamtien@gmail.com",
+  "phone": "0912345678",
+  "gender": "female",
+  "age": 22,
+  "address": {
+    "street": "123 Nguyen Thi Minh Khai",
+    "city": "Can Tho",
+    "postal_code": "900000"
+  },
+  "preferred_delivery_location": "LOC004",
+  "role": "Very important person"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937104"
+  },
+  "customer_id": "CUST005",
+  "name": "Do Van No",
+  "email": "dono@gmail.com",
+  "phone": "0167341289",
+  "gender": "male",
+  "age": 35,
+  "address": {
+    "street": "567 Ly Tu Trong",
+    "city": "Hai Phong",
+    "postal_code": "180000"
+  },
+  "preferred_delivery_location": "LOC005",
+  "role": "Normal"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937105"
+  },
+  "customer_id": "CUST006",
+  "name": "Nguyen Thi Bach",
+  "email": "nguyenbach@gmail.com",
+  "phone": "0912345690",
+  "gender": "female",
+  "age": 29,
+  "address": {
+    "street": "678 Hai Ba Trung",
+    "city": "Hue",
+    "postal_code": "500000"
+  },
+  "preferred_delivery_location": "LOC006",
+  "role": "Medium"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937106"
+  },
+  "customer_id": "CUST007",
+  "name": "Le Van Dung",
+  "email": "ledung@gmail.com",
+  "phone": "0912345123",
+  "gender": "male",
+  "age": 40,
+  "address": {
+    "street": "789 Le Van Sy",
+    "city": "Vung Tau",
+    "postal_code": "790000"
+  },
+  "preferred_delivery_location": "LOC007",
+  "role": "Normal"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937107"
+  },
+  "customer_id": "CUST008",
+  "name": "Hoang Thi Hoa",
+  "email": "hoanghoa@gmail.com",
+  "phone": "0167893456",
+  "gender": "female",
+  "age": 33,
+  "address": {
+    "street": "123 Tran Phu",
+    "city": "Binh Dinh",
+    "postal_code": "820000"
+  },
+  "preferred_delivery_location": "LOC008",
+  "role": "Normal"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937108"
+  },
+  "customer_id": "CUST009",
+  "name": "Tran Van Mui",
+  "email": "tranmui@gmail.com",
+  "phone": "0123456789",
+  "gender": "male",
+  "age": 27,
+  "address": {
+    "street": "456 Quang Trung",
+    "city": "Quang Ninh",
+    "postal_code": "840000"
+  },
+  "preferred_delivery_location": "LOC009",
+  "role": "Very important person"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937109"
+  },
+  "customer_id": "CUST002",
+  "name": "Le Thi Bao",
+  "email": "lebao@gmail.com",
+  "phone": "0987654321",
+  "gender": "female",
+  "age": 25,
+  "address": {
+    "street": "45 Nguyen Trai",
+    "city": "Ha Noi",
+    "postal_code": "100000"
+  },
+  "preferred_delivery_location": "LOC001",
+  "role": "Normal"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937110"
+  },
+  "customer_id": "CUST003",
+  "name": "Tran Van Hieu",
+  "email": "hieu.tran@gmail.com",
+  "phone": "0981234567",
+  "gender": "male",
+  "age": 32,
+  "address": {
+    "street": "67 Tran Hung Dao",
+    "city": "Da Nang",
+    "postal_code": "550000"
+  },
+  "preferred_delivery_location": "LOC002",
+  "role": "Premium"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937111"
+  },
+  "customer_id": "CUST004",
+  "name": "Nguyen Thi Minh",
+  "email": "minh.nguyen@gmail.com",
+  "phone": "0909876543",
+  "gender": "female",
+  "age": 28,
+  "address": {
+    "street": "12 Pham Van Dong",
+    "city": "Ho Chi Minh",
+    "postal_code": "700000"
+  },
+  "preferred_delivery_location": "LOC003",
+  "role": "Normal"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937112"
+  },
+  "customer_id": "CUST005",
+  "name": "Hoang Dinh Vu",
+  "email": "hoangvu@gmail.com",
+  "phone": "0912345678",
+  "gender": "male",
+  "age": 35,
+  "address": {
+    "street": "34 Le Thanh Ton",
+    "city": "Nha Trang",
+    "postal_code": "570000"
+  },
+  "preferred_delivery_location": "LOC004",
+  "role": "VIP"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937113"
+  },
+  "customer_id": "CUST006",
+  "name": "Pham Tuan Anh",
+  "email": "tuananh@gmail.com",
+  "phone": "0976543210",
+  "gender": "male",
+  "age": 27,
+  "address": {
+    "street": "78 Le Van Sy",
+    "city": "Ho Chi Minh",
+    "postal_code": "700000"
+  },
+  "preferred_delivery_location": "LOC002",
+  "role": "Normal"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937114"
+  },
+  "customer_id": "CUST007",
+  "name": "Doan Thi Lan",
+  "email": "lan.doan@gmail.com",
+  "phone": "0921345678",
+  "gender": "female",
+  "age": 29,
+  "address": {
+    "street": "91 Nguyen Van Cu",
+    "city": "Ho Chi Minh",
+    "postal_code": "700000"
+  },
+  "preferred_delivery_location": "LOC001",
+  "role": "Premium"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937115"
+  },
+  "customer_id": "CUST008",
+  "name": "Nguyen Thanh Son",
+  "email": "son.nguyen@gmail.com",
+  "phone": "0938765432",
+  "gender": "male",
+  "age": 40,
+  "address": {
+    "street": "15 Bui Thi Xuan",
+    "city": "Hue",
+    "postal_code": "530000"
+  },
+  "preferred_delivery_location": "LOC005",
+  "role": "Normal"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937116"
+  },
+  "customer_id": "CUST009",
+  "name": "Vo Thi My",
+  "email": "my.vo@gmail.com",
+  "phone": "0945654321",
+  "gender": "female",
+  "age": 22,
+  "address": {
+    "street": "23 Bach Dang",
+    "city": "Da Nang",
+    "postal_code": "550000"
+  },
+  "preferred_delivery_location": "LOC003",
+  "role": "Normal"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937117"
+  },
+  "customer_id": "CUST010",
+  "name": "Dang Van Bao",
+  "email": "bao.dang@gmail.com",
+  "phone": "0954321876",
+  "gender": "male",
+  "age": 31,
+  "address": {
+    "street": "46 Tran Phu",
+    "city": "Nha Trang",
+    "postal_code": "570000"
+  },
+  "preferred_delivery_location": "LOC006",
+  "role": "Premium"
+},
+{
+  "_id": {
+    "$oid": "66dae46740e9579408937118"
+  },
+  "customer_id": "CUST011",
+  "name": "Hoang Thi Hoa",
+  "email": "hoa.hoang@gmail.com",
+  "phone": "0967865432",
+  "gender": "female",
+  "age": 33,
+  "address": {
+    "street": "99 Ly Thuong Kiet",
+    "city": "Ha Noi",
+    "postal_code": "100000"
+  },
+  "preferred_delivery_location": "LOC001",
+  "role": "VIP"
+}]

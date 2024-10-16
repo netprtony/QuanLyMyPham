@@ -1,0 +1,1057 @@
+[{
+  "_id": {
+    "$oid": "66dc0717be64efd4d20c6dc3"
+  },
+  "order_id": "ORD001",
+  "customer_id": "CUST001",
+  "delivery_location_id": "LOC001",
+  "products_ordered": [
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 200000
+    },
+    {
+      "product_name": "Face Wash",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 150000
+    }
+  ],
+  "total_price": 680000,
+  "order_date": "2024-09-01",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66dc0717be64efd4d20c6dc4"
+  },
+  "order_id": "ORD002",
+  "customer_id": "CUST002",
+  "delivery_location_id": "LOC002",
+  "products_ordered": [
+    {
+      "product_name": "Perfume",
+      "category": "Perfume",
+      "quantity": 1,
+      "price": 400000
+    },
+    {
+      "product_name": "Shampoo",
+      "category": "Haircare",
+      "quantity": 3,
+      "price": 300000
+    }
+  ],
+  "total_price": 700000,
+  "order_date": "2024-09-02",
+  "status": "Shipped"
+},
+{
+  "_id": {
+    "$oid": "66dc0717be64efd4d20c6dc5"
+  },
+  "order_id": "ORD003",
+  "customer_id": "CUST003",
+  "delivery_location_id": "LOC003",
+  "products_ordered": [
+    {
+      "product_name": "Foundation",
+      "category": "Makeup",
+      "quantity": 1,
+      "price": 350000
+    },
+    {
+      "product_name": "Conditioner",
+      "category": "Haircare",
+      "quantity": 2,
+      "price": 180000
+    }
+  ],
+  "total_price": 530000,
+  "order_date": "2024-09-03",
+  "status": "Processing"
+},
+{
+  "_id": {
+    "$oid": "66dc0717be64efd4d20c6dc6"
+  },
+  "order_id": "ORD004",
+  "customer_id": "CUST004",
+  "delivery_location_id": "LOC004",
+  "products_ordered": [
+    {
+      "product_name": "Moisturizer",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 220000
+    },
+    {
+      "product_name": "Blush",
+      "category": "Makeup",
+      "quantity": 1,
+      "price": 150000
+    }
+  ],
+  "total_price": 370000,
+  "order_date": "2024-09-04",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66dc0717be64efd4d20c6dc7"
+  },
+  "order_id": "ORD005",
+  "customer_id": "CUST005",
+  "delivery_location_id": "LOC005",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 2,
+      "price": 600000
+    },
+    {
+      "product_name": "Hair Oil",
+      "category": "Haircare",
+      "quantity": 1,
+      "price": 150000
+    }
+  ],
+  "total_price": 750000,
+  "order_date": "2024-09-05",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66dc0717be64efd4d20c6dc8"
+  },
+  "order_id": "ORD006",
+  "customer_id": "CUST006",
+  "delivery_location_id": "LOC006",
+  "products_ordered": [
+    {
+      "product_name": "Eyeliner",
+      "category": "Makeup",
+      "quantity": 1,
+      "price": 120000
+    },
+    {
+      "product_name": "Perfume",
+      "category": "Perfume",
+      "quantity": 2,
+      "price": 800000
+    }
+  ],
+  "total_price": 920000,
+  "order_date": "2024-09-06",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66dc0717be64efd4d20c6dc9"
+  },
+  "order_id": "ORD007",
+  "customer_id": "CUST007",
+  "delivery_location_id": "LOC007",
+  "products_ordered": [
+    {
+      "product_name": "Sunscreen",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 180000
+    },
+    {
+      "product_name": "Hair Mask",
+      "category": "Haircare",
+      "quantity": 1,
+      "price": 250000
+    }
+  ],
+  "total_price": 430000,
+  "order_date": "2024-09-07",
+  "status": "Shipped"
+},
+{
+  "_id": {
+    "$oid": "66dc0717be64efd4d20c6dca"
+  },
+  "order_id": "ORD008",
+  "customer_id": "CUST008",
+  "delivery_location_id": "LOC008",
+  "products_ordered": [
+    {
+      "product_name": "Shampoo",
+      "category": "Haircare",
+      "quantity": 1,
+      "price": 150000
+    },
+    {
+      "product_name": "Perfume",
+      "category": "Perfume",
+      "quantity": 1,
+      "price": 600000
+    }
+  ],
+  "total_price": 750000,
+  "order_date": "2024-09-08",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66dc0717be64efd4d20c6dcb"
+  },
+  "order_id": "ORD009",
+  "customer_id": "CUST009",
+  "delivery_location_id": "LOC009",
+  "products_ordered": [
+    {
+      "product_name": "Face Cream",
+      "category": "Skincare",
+      "quantity": 2,
+      "price": 500000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 1,
+      "price": 200000
+    }
+  ],
+  "total_price": 700000,
+  "order_date": "2024-09-09",
+  "status": "Processing"
+},
+{
+  "_id": {
+    "$oid": "66dc0717be64efd4d20c6dcc"
+  },
+  "order_id": "ORD010",
+  "customer_id": "CUST010",
+  "delivery_location_id": "LOC010",
+  "products_ordered": [
+    {
+      "product_name": "Foundation",
+      "category": "Makeup",
+      "quantity": 1,
+      "price": 300000
+    },
+    {
+      "product_name": "Perfume",
+      "category": "Perfume",
+      "quantity": 1,
+      "price": 500000
+    }
+  ],
+  "total_price": 800000,
+  "order_date": "2024-09-10",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de4ed6938dae41743825ad"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de4fa398c3caa0c4a2c653"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de5071a135ce79a01f78f2"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de545e4bbe244b2904572d"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de591347edc1173e203da1"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de5929328b007ec8cf7db9"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de5a869362c908868ba446"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de5c003c1f0a41187d38f9"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de5df097546c4072152fb8"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de5f03d6ba4a537bc65f92"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de608b65652c0c91e5233c"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de62fae58a0c8c7c585fc1"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de64b728f3e265994d4e9f"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de64f0c736d4750690eb8f"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de65372a6a30c44c7ed107"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de65c6faa4a49ba893b866"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de65efb71abec7237080fb"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de65f80fffc498af51bfd2"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de661a37a252494a441696"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66de679845418faf468190b0"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66e003df34b697cddb94d48d"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66e003e8364129a907d03657"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66e25beab7ed8852871263ed"
+  },
+  "order_id": "ORD011",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Lipstick",
+      "category": "Cosmetics",
+      "quantity": 2,
+      "price": 150000
+    }
+  ],
+  "total_price": 550000,
+  "order_date": "2024-09-12",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66e25beab7ed8852871263ee"
+  },
+  "order_id": "ORD012",
+  "customer_id": "CUST002",
+  "delivery_location_id": "LOC001",
+  "products_ordered": [
+    {
+      "product_name": "Shampoo",
+      "category": "Haircare",
+      "quantity": 1,
+      "price": 120000
+    },
+    {
+      "product_name": "Conditioner",
+      "category": "Haircare",
+      "quantity": 1,
+      "price": 110000
+    }
+  ],
+  "total_price": 230000,
+  "order_date": "2024-09-10",
+  "status": "Processing"
+},
+{
+  "_id": {
+    "$oid": "66e25beab7ed8852871263ef"
+  },
+  "order_id": "ORD013",
+  "customer_id": "CUST003",
+  "delivery_location_id": "LOC002",
+  "products_ordered": [
+    {
+      "product_name": "Face Wash",
+      "category": "Skincare",
+      "quantity": 2,
+      "price": 90000
+    },
+    {
+      "product_name": "Moisturizer",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 180000
+    }
+  ],
+  "total_price": 360000,
+  "order_date": "2024-09-14",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66e25beab7ed8852871263f0"
+  },
+  "order_id": "ORD014",
+  "customer_id": "CUST004",
+  "delivery_location_id": "LOC003",
+  "products_ordered": [
+    {
+      "product_name": "Body Lotion",
+      "category": "Bodycare",
+      "quantity": 1,
+      "price": 150000
+    },
+    {
+      "product_name": "Sunscreen",
+      "category": "Skincare",
+      "quantity": 2,
+      "price": 170000
+    }
+  ],
+  "total_price": 490000,
+  "order_date": "2024-09-13",
+  "status": "Shipped"
+},
+{
+  "_id": {
+    "$oid": "66e25beab7ed8852871263f1"
+  },
+  "order_id": "ORD015",
+  "customer_id": "CUST005",
+  "delivery_location_id": "LOC004",
+  "products_ordered": [
+    {
+      "product_name": "Perfume",
+      "category": "Fragrance",
+      "quantity": 1,
+      "price": 850000
+    }
+  ],
+  "total_price": 850000,
+  "order_date": "2024-09-15",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66e25beab7ed8852871263f2"
+  },
+  "order_id": "ORD016",
+  "customer_id": "CUST006",
+  "delivery_location_id": "LOC002",
+  "products_ordered": [
+    {
+      "product_name": "Foundation",
+      "category": "Cosmetics",
+      "quantity": 1,
+      "price": 320000
+    },
+    {
+      "product_name": "Concealer",
+      "category": "Cosmetics",
+      "quantity": 1,
+      "price": 180000
+    }
+  ],
+  "total_price": 500000,
+  "order_date": "2024-09-16",
+  "status": "Processing"
+},
+{
+  "_id": {
+    "$oid": "66e25beab7ed8852871263f3"
+  },
+  "order_id": "ORD017",
+  "customer_id": "CUST007",
+  "delivery_location_id": "LOC001",
+  "products_ordered": [
+    {
+      "product_name": "Serum",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 250000
+    },
+    {
+      "product_name": "Face Mask",
+      "category": "Skincare",
+      "quantity": 5,
+      "price": 50000
+    }
+  ],
+  "total_price": 500000,
+  "order_date": "2024-09-17",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66e25beab7ed8852871263f4"
+  },
+  "order_id": "ORD018",
+  "customer_id": "CUST008",
+  "delivery_location_id": "LOC005",
+  "products_ordered": [
+    {
+      "product_name": "Hair Oil",
+      "category": "Haircare",
+      "quantity": 2,
+      "price": 120000
+    }
+  ],
+  "total_price": 240000,
+  "order_date": "2024-09-18",
+  "status": "Shipped"
+},
+{
+  "_id": {
+    "$oid": "66e25beab7ed8852871263f5"
+  },
+  "order_id": "ORD019",
+  "customer_id": "CUST009",
+  "delivery_location_id": "LOC003",
+  "products_ordered": [
+    {
+      "product_name": "Shower Gel",
+      "category": "Bodycare",
+      "quantity": 3,
+      "price": 80000
+    }
+  ],
+  "total_price": 240000,
+  "order_date": "2024-09-19",
+  "status": "Delivered"
+},
+{
+  "_id": {
+    "$oid": "66e25beab7ed8852871263f6"
+  },
+  "order_id": "ORD020",
+  "customer_id": "CUST010",
+  "delivery_location_id": "LOC006",
+  "products_ordered": [
+    {
+      "product_name": "Blush",
+      "category": "Cosmetics",
+      "quantity": 1,
+      "price": 190000
+    },
+    {
+      "product_name": "Eyeliner",
+      "category": "Cosmetics",
+      "quantity": 1,
+      "price": 120000
+    }
+  ],
+  "total_price": 310000,
+  "order_date": "2024-09-20",
+  "status": "Processing"
+},
+{
+  "_id": {
+    "$oid": "66e25beab7ed8852871263f7"
+  },
+  "order_id": "ORD021",
+  "customer_id": "CUST011",
+  "delivery_location_id": "LOC011",
+  "products_ordered": [
+    {
+      "product_name": "Lip Balm",
+      "category": "Cosmetics",
+      "quantity": 3,
+      "price": 50000
+    },
+    {
+      "product_name": "Eye Cream",
+      "category": "Skincare",
+      "quantity": 1,
+      "price": 300000
+    }
+  ],
+  "total_price": 450000,
+  "order_date": "2024-09-21",
+  "status": "Delivered"
+}]

@@ -1,0 +1,316 @@
+[{
+  "_id": {
+    "$oid": "66daec8a40e9579408937133"
+  },
+  "supplier_id": "SUP001",
+  "name": "Vimaccos",
+  "contact_info": {
+    "phone": "0987654321",
+    "email": "vimaccos@gmail.com",
+    "address": "123 Nguyen Hue, Ho Chi Minh City"
+  },
+  "products_supplied": [
+    "Facial Cleanser",
+    "Sunscreen"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937134"
+  },
+  "supplier_id": "SUP002",
+  "name": "Hanacos",
+  "contact_info": {
+    "phone": "0912345678",
+    "email": "hanacos@gmail.com",
+    "address": "456 Le Loi, Da Nang"
+  },
+  "products_supplied": [
+    "Lipstick",
+    "Eyeliner"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937135"
+  },
+  "supplier_id": "SUP003",
+  "name": "IFREE",
+  "contact_info": {
+    "phone": "0933456789",
+    "email": "ifree@gmail.com",
+    "address": "789 Tran Phu, Hanoi"
+  },
+  "products_supplied": [
+    "Moisturizer"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937136"
+  },
+  "supplier_id": "SUP004",
+  "name": "La'p",
+  "contact_info": {
+    "phone": "0123456789",
+    "email": "la'p@gmail.com",
+    "address": "123 Bach Dang, Hai Phong"
+  },
+  "products_supplied": [
+    "Shampoo",
+    "Conditioner"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937137"
+  },
+  "supplier_id": "SUP005",
+  "name": "Viet Huong Cosmetics Factory",
+  "contact_info": {
+    "phone": "0945678901",
+    "email": "viethuong@gmail.com",
+    "address": "456 Le Duan, Hue"
+  },
+  "products_supplied": [
+    "Face Mask"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937138"
+  },
+  "supplier_id": "SUP006",
+  "name": "Hani",
+  "contact_info": {
+    "phone": "0967890123",
+    "email": "hani@gmail.com",
+    "address": "789 Phan Dinh Phung, Vung Tau"
+  },
+  "products_supplied": [
+    "Body Lotion"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937139"
+  },
+  "supplier_id": "SUP007",
+  "name": "Vincos",
+  "contact_info": {
+    "phone": "0987891234",
+    "email": "vincos@gmail.com",
+    "address": "321 Quang Trung, Binh Duong"
+  },
+  "products_supplied": [
+    "Hair Oil"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e957940893713a"
+  },
+  "supplier_id": "SUP008",
+  "name": "Huong Lieu Thanh Xuan",
+  "contact_info": {
+    "phone": "0912312312",
+    "email": "thanhxuan@gmail.com",
+    "address": "456 Hai Ba Trung, Nha Trang"
+  },
+  "products_supplied": [
+    "Serum",
+    "Lip Balm"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e957940893713b"
+  },
+  "supplier_id": "SUP009",
+  "name": "WINLAB",
+  "contact_info": {
+    "phone": "0909876543",
+    "email": "winlabI@gmail.com",
+    "address": "789 Bach Dang, Khanh Hoa"
+  },
+  "products_supplied": [
+    "Shampoo",
+    "Hair Serum"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e957940893713c"
+  },
+  "supplier_id": "SUP010",
+  "name": "ResHPCos",
+  "contact_info": {
+    "phone": "0123654987",
+    "email": "reshpcos@gmail.com",
+    "address": "123 Phan Chau Trinh, Hoi An"
+  },
+  "products_supplied": [
+    "Facial Scrub",
+    "Toner"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e957940893713d"
+  },
+  "supplier_id": "SUP001",
+  "name": "Cosmetics Co.",
+  "contact_info": {
+    "phone": "0123456789",
+    "email": "contact@cosmeticsco.com",
+    "address": "456 Le Loi, Ho Chi Minh City"
+  },
+  "products_supplied": [
+    "Moisturizer",
+    "Sunscreen SPF 30"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e957940893713e"
+  },
+  "supplier_id": "SUP002",
+  "name": "Skincare Labs",
+  "contact_info": {
+    "phone": "0123456780",
+    "email": "info@skincarelabs.com",
+    "address": "789 Tran Hung Dao, Hanoi"
+  },
+  "products_supplied": [
+    "Vitamin C Serum",
+    "Hydrating Face Mask"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e957940893713f"
+  },
+  "supplier_id": "SUP003",
+  "name": "Beauty Essentials",
+  "contact_info": {
+    "phone": "0123654789",
+    "email": "support@beautyessentials.com",
+    "address": "321 Nguyen Hue, Da Nang"
+  },
+  "products_supplied": [
+    "Body Lotion",
+    "Face Wash"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937140"
+  },
+  "supplier_id": "SUP004",
+  "name": "Hair Care Inc.",
+  "contact_info": {
+    "phone": "0123456781",
+    "email": "sales@haircareinc.com",
+    "address": "654 Hai Ba Trung, Ho Chi Minh City"
+  },
+  "products_supplied": [
+    "Shampoo",
+    "Conditioner"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937141"
+  },
+  "supplier_id": "SUP005",
+  "name": "Natural Remedies",
+  "contact_info": {
+    "phone": "0123456782",
+    "email": "info@naturalremedies.com",
+    "address": "123 Tran Dai Nghia, Ho Chi Minh City"
+  },
+  "products_supplied": [
+    "Herbal Face Mask",
+    "Tea Tree Oil"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937142"
+  },
+  "supplier_id": "SUP006",
+  "name": "Fragrance House",
+  "contact_info": {
+    "phone": "0123456783",
+    "email": "info@fragrancehouse.com",
+    "address": "456 Ly Tu Trong, Hanoi"
+  },
+  "products_supplied": [
+    "Perfume",
+    "Body Mist"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937143"
+  },
+  "supplier_id": "SUP007",
+  "name": "Makeup Studio",
+  "contact_info": {
+    "phone": "0123456784",
+    "email": "info@makeupstudio.com",
+    "address": "789 Pham Van Dong, Da Nang"
+  },
+  "products_supplied": [
+    "Foundation",
+    "Lipstick"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937144"
+  },
+  "supplier_id": "SUP008",
+  "name": "Organic Skincare",
+  "contact_info": {
+    "phone": "0123456785",
+    "email": "info@organicskincare.com",
+    "address": "321 Nguyen Trai, Ho Chi Minh City"
+  },
+  "products_supplied": [
+    "Organic Soap",
+    "Moisturizer"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937145"
+  },
+  "supplier_id": "SUP009",
+  "name": "Health & Beauty",
+  "contact_info": {
+    "phone": "0123456786",
+    "email": "info@healthandbeauty.com",
+    "address": "654 Le Van Sy, Ho Chi Minh City"
+  },
+  "products_supplied": [
+    "Nourishing Oil",
+    "Anti-Aging Cream"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66daec8a40e9579408937146"
+  },
+  "supplier_id": "SUP010",
+  "name": "ResHPCos",
+  "contact_info": {
+    "phone": "0123654987",
+    "email": "reshpcos@gmail.com",
+    "address": "123 Phan Chau Trinh, Hoi An"
+  },
+  "products_supplied": [
+    "Facial Scrub",
+    "Toner"
+  ]
+}]

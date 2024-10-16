@@ -1,0 +1,240 @@
+[{
+  "_id": {
+    "$oid": "66daf28340e957940893716a"
+  },
+  "location_id": "LOC001",
+  "address": "123 Nguyen Hue, Ho Chi Minh City",
+  "city": "Ho Chi Minh City",
+  "postal_code": "700000",
+  "country": "Vietnam",
+  "contact_number": "0987654321",
+  "type": "Warehouse"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e957940893716b"
+  },
+  "location_id": "LOC002",
+  "address": "456 Le Loi, Da Nang",
+  "city": "Da Nang",
+  "postal_code": "550000",
+  "country": "Vietnam",
+  "contact_number": "0912345678",
+  "type": "Retail Store"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e957940893716c"
+  },
+  "location_id": "LOC003",
+  "address": "789 Tran Phu, Hanoi",
+  "city": "Hanoi",
+  "postal_code": "100000",
+  "country": "Vietnam",
+  "contact_number": "0933456789",
+  "type": "Office"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e957940893716d"
+  },
+  "location_id": "LOC004",
+  "address": "321 Bach Dang, Hai Phong",
+  "city": "Hai Phong",
+  "postal_code": "400000",
+  "country": "Vietnam",
+  "contact_number": "0123456789",
+  "type": "Warehouse"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e957940893716e"
+  },
+  "location_id": "LOC005",
+  "address": "654 Phan Dinh Phung, Hue",
+  "city": "Hue",
+  "postal_code": "530000",
+  "country": "Vietnam",
+  "contact_number": "0945678901",
+  "type": "Retail Store"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e957940893716f"
+  },
+  "location_id": "LOC006",
+  "address": "987 Le Duan, Vung Tau",
+  "city": "Vung Tau",
+  "postal_code": "780000",
+  "country": "Vietnam",
+  "contact_number": "0967890123",
+  "type": "Warehouse"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937170"
+  },
+  "location_id": "LOC007",
+  "address": "654 Quang Trung, Binh Duong",
+  "city": "Binh Duong",
+  "postal_code": "820000",
+  "country": "Vietnam",
+  "contact_number": "0987891234",
+  "type": "Retail Store"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937171"
+  },
+  "location_id": "LOC008",
+  "address": "321 Tran Phu, Nha Trang",
+  "city": "Nha Trang",
+  "postal_code": "650000",
+  "country": "Vietnam",
+  "contact_number": "0912312312",
+  "type": "Office"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937172"
+  },
+  "location_id": "LOC009",
+  "address": "123 Bach Dang, Khanh Hoa",
+  "city": "Khanh Hoa",
+  "postal_code": "660000",
+  "country": "Vietnam",
+  "contact_number": "0909876543",
+  "type": "Warehouse"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937173"
+  },
+  "location_id": "LOC010",
+  "address": "456 Phan Chau Trinh, Hoi An",
+  "city": "Hoi An",
+  "postal_code": "560000",
+  "country": "Vietnam",
+  "contact_number": "0123654987",
+  "type": "Retail Store"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937174"
+  },
+  "location_id": "LOC011",
+  "address": "789 Tran Phu, Nha Trang",
+  "city": "Nha Trang",
+  "postal_code": "570000",
+  "country": "Vietnam",
+  "contact_number": "0123456789",
+  "type": "Warehouse"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937175"
+  },
+  "location_id": "LOC012",
+  "address": "123 Le Loi, Ho Chi Minh",
+  "city": "Ho Chi Minh",
+  "postal_code": "700000",
+  "country": "Vietnam",
+  "contact_number": "0987654321",
+  "type": "Retail Store"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937176"
+  },
+  "location_id": "LOC013",
+  "address": "456 Le Thanh Ton, Da Nang",
+  "city": "Da Nang",
+  "postal_code": "550000",
+  "country": "Vietnam",
+  "contact_number": "0934567890",
+  "type": "Distribution Center"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937177"
+  },
+  "location_id": "LOC014",
+  "address": "32 Pham Ngu Lao, Hue",
+  "city": "Hue",
+  "postal_code": "530000",
+  "country": "Vietnam",
+  "contact_number": "0945678901",
+  "type": "Retail Store"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937178"
+  },
+  "location_id": "LOC015",
+  "address": "789 Nguyen Trai, Ha Noi",
+  "city": "Ha Noi",
+  "postal_code": "100000",
+  "country": "Vietnam",
+  "contact_number": "0912345678",
+  "type": "Warehouse"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937179"
+  },
+  "location_id": "LOC016",
+  "address": "56 Hai Ba Trung, Ho Chi Minh",
+  "city": "Ho Chi Minh",
+  "postal_code": "700000",
+  "country": "Vietnam",
+  "contact_number": "0987654320",
+  "type": "Distribution Center"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937180"
+  },
+  "location_id": "LOC017",
+  "address": "123 Le Duan, Da Nang",
+  "city": "Da Nang",
+  "postal_code": "550000",
+  "country": "Vietnam",
+  "contact_number": "0909876543",
+  "type": "Retail Store"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937181"
+  },
+  "location_id": "LOC018",
+  "address": "45 Tran Quoc Toan, Can Tho",
+  "city": "Can Tho",
+  "postal_code": "900000",
+  "country": "Vietnam",
+  "contact_number": "0934567810",
+  "type": "Retail Store"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937182"
+  },
+  "location_id": "LOC019",
+  "address": "789 Ly Thuong Kiet, Ha Noi",
+  "city": "Ha Noi",
+  "postal_code": "100000",
+  "country": "Vietnam",
+  "contact_number": "0912340987",
+  "type": "Warehouse"
+},
+{
+  "_id": {
+    "$oid": "66daf28340e9579408937183"
+  },
+  "location_id": "LOC020",
+  "address": "123 Bui Thi Xuan, Hue",
+  "city": "Hue",
+  "postal_code": "530000",
+  "country": "Vietnam",
+  "contact_number": "0945678123",
+  "type": "Distribution Center"
+}]
