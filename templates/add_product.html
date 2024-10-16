@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm Sản Phẩm</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+{% extends "layout.html" %}
+{% block title %}
+    Thêm Sản Phẩm
+{% endblock %}
+{% block content %}
     <h1>Thêm Sản Phẩm Mới</h1>
     <form method="POST" action="/add-product">
         <div class="form-group">
@@ -31,5 +27,4 @@
         </div>
         <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
     </form>
-</body>
-</html>
+{% endblock %}

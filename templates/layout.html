@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Chủ</title>
+    <title>{% block title %}My Application{% endblock %}</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -21,15 +21,17 @@
         <div class="sidebar">
             <ul class="functions-list">
                 <li><a href="/customer-list">Quản Lý Khách Hàng</a></li>
-                <li><a href="/customer-list">Danh Sách Khách Hàng</a></li>
                 <li><a href="/locations">Quản Lý Địa Điểm Khách Hàng</a></li>
                 <li><a href="/products">Danh Mục Mỹ Phẩm</a></li>
                 <li><a href="/delivery">Giao Hàng</a></li>
             </ul>
         </div>
-        <div class="main-content">
+
+        <main class="main-content">
+            {% block content %}
             <img src="/static/images/register2.jpg" alt="Hình ảnh" style="width: 100%; height: auto;"> <!-- Thêm thẻ <img> -->
-        </div>
+            {% endblock %}
+        </main>
     </div>
 
 </body>

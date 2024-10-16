@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giao Hàng</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
+{% extends "layout.html" %}
+{% block title %}
+    Giao Hàngd
+{% endblock %}
+{% block content %}
     <div class="delivery-form">
         <div class="form-group">
             <label for="selected_customer">Chọn Khách Hàng:</label>
@@ -38,5 +34,4 @@
         </div>
         <button type="submit" class="btn btn-primary">Tiếp Tục</button>
     </div>
-</body>
-</html>
+{% endblock %}

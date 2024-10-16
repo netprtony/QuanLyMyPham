@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm Khách Hàng</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <h1>Thêm Khách Hàng</h1>
+{% extends "layout.html" %}
+{% block title %}
+    Thêm khách hàng
+{% endblock %}
+{% block content %}
     <form method="POST" action="/add-customer">
         <div class="form-group">
             <label for="name">Tên:</label>
@@ -27,5 +22,4 @@
         </div>
         <button type="submit" class="btn btn-primary">Thêm Khách Hàng</button>
     </form>
-</body>
-</html>
+{% endblock %}

@@ -1,61 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh Sách Khách Hàng</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <h1>Danh Sách Khách Hàng</h1>
-    <a href="/add-customer" class="btn btn-primary">Thêm Khách Hàng</a>
+{% extends "layout.html" %}
+{% block title %}
+    Danh Sách Khách Hàng
+{% endblock %}
+{% block content %}
+<div class="product-management">
+    <div class="product-header">
+        <h2> Danh Sách Khách Hàng</h2>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Tên</th>
-                <th>Địa chỉ</th>
-                <th>Số điện thoại</th>
-                <th>Email</th>
-                <th>Hành động</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for index, customer in enumerate(customers) %}
+    <div class="customer-actions">
+        <a href="/add-customer" class="btn btn-primary">Thêm Khách Hàng</a>
+    </div>
+    <div class="customer-list">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>{{ customer.name }}</td>
-                    <td>{{ customer.address.street }}, {{ customer.address.city }}, {{ customer.address.postal_code }}</td>
-                    <td>{{ customer.phone }}</td>
-                    <td>{{ customer.email }}</td>
-                    <td>
-                        <a href="/edit_customer?id={{ customer.customer_id }}" class="btn btn-warning">Sửa</a>
-                        <button class="btn btn-danger" onclick="deleteCustomer(this)" data-id="{{ customer.customer_id }}">Xóa</button>
-                    </td>
+                    <th>Tên</th>
+                    <th>Địa chỉ</th>
+                    <th>Số điện thoại</th>
+                    <th>Email</th>
+                    <th>Hành động</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <script>
-        function deleteCustomer(button) {
-            const customerId = button.getAttribute('data-id');  // Lấy ID từ thuộc tính data-id
-            if (confirm("Bạn có chắc chắn muốn xóa khách hàng này?")) {
-                fetch(`/delete_customer/${customerId}`, {
-                    method: 'DELETE',
-                })
-                .then(response => {
-                    if (response.ok) {
-                        alert("Khách hàng đã được xóa thành công.");
-                        // Xóa dòng khách hàng khỏi bảng
-                        button.closest('tr').remove(); // Xóa dòng tương ứng trong bảng
-                    } else {
-                        alert("Có lỗi xảy ra khi xóa khách hàng.");
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            }
-        }
-    </script>
-</body>
-</html>
+            </thead>
+            <tbody>
+                {% for index, customer in enumerate(customers) %}
+                    <tr>
+                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.address.street }}, {{ customer.address.city }}, {{ customer.address.postal_code }}</td>
+                        <td>{{ customer.phone }}</td>
+                        <td>{{ customer.email }}</td>
+                        <td>
+                            <a href="/edit_customer?id={{ customer['_id']['$oid'] }}" class="btn btn-warning">Sửa</a>
+                            <button class="btn btn-danger" onclick="deleteCustomer(this)" data-id="{{ customer.customer_id }}">Xóa</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>        
+</div>
+
+{% endblock %}
