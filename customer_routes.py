@@ -1,14 +1,20 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 client = MongoClient('mongodb://localhost:27017/')
 db = client['QL_CosmeticsStore']
 customers_collection = db['Customers']
 customer_bp = Blueprint('customer_bp', __name__)
+
 @customer_bp.route('/customer-list')
 def customer_list():
     customers = customers_collection.find()
     return render_template('customer_list.html', customers=customers, enumerate=enumerate)
 
+@customer_bp.route('/customer/<customer_id>')
+def get_customer(customer_id):
+    customer = customers_collection.find_one({"_id": ObjectId(customer_id)})
+    return render_template('customer_list.html', customer=customer)
 
 @customer_bp.route('/add-customer', methods=['POST'])
 def add_customer():
@@ -47,22 +53,30 @@ def delete_customer(customer_id):
     else:
         return "Không tìm thấy khách hàng với ID này", 404
 #Sửa
-@customer_bp.route('/edit-customer/<int:customer_id>', methods=['POST'])
+@customer_bp.route('/customer-list/<customer_id>', methods=['POST'])
 def edit_customer(customer_id):
     # Lấy dữ liệu từ form
-    name = request.form['name']
-    email = request.form['email']
-    phone = request.form['phone']
-    gender = request.form['gender']
+    updated_data = {
+        "name": request.form['name'],
+        "email": request.form['email'],
+        "phone": request.form['phone'],
+        "gender": request.form['gender'],
+        "age": int(request.form['age']),
+        "address": {
+            "street": request.form['street'],
+            "city": request.form['city'],
+            "postal_code": request.form['postal_code']
+        },
+        "preferred_delivery_location": request.form['preferred_delivery_location'],
+        "role": request.form['role']
+    }
 
-    # Cập nhật thông tin khách hàng trong MongoDB
-    customers_collection.update_one(
-        {'customer_id': customer_id},
-        {'$set': {
-            'name': name,
-            'email': email,
-            'phone': phone,
-            'gender': gender
-        }}
-    )
-    return redirect(url_for('customer_bp.customer_list'))
+    # Cập nhật dữ liệu trong MongoDB
+    result = customers_collection.update_one({"_id": ObjectId(customer_id)}, {"$set": updated_data})
+
+    if result.modified_count > 0:
+        flash("Cập nhật thông tin khách hàng thành công!", "success")
+    else:
+        flash("Không có thay đổi nào!", "warning")
+
+    return redirect(url_for('customer_bp.list_customers'))

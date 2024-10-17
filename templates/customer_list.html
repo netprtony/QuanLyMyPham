@@ -35,9 +35,9 @@
                         <td>{{ customer['email'] }}</td>
                         <td>{{ customer['role'] }}</td>
                         <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editCustomerCanvas{{ customer['customer_id'] }}">
+                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editCustomerModal{{ customer['_id']['$oid'] }}">
                                 Sửa
-                            </button>
+                            </button>  
                             <form action="" method="POST" style="display:inline;">
                                 <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">Xóa</button>
                             </form>
@@ -107,4 +107,13 @@
             </div>
         </div>
     </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert-container">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
 {% endblock %}
