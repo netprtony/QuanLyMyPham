@@ -3,30 +3,29 @@
     Danh Sách Khách Hàng
 {% endblock %}
 {% block content %}
-<div class="management">
-    <div class="header">
-        <h2>Danh Mục Khách Hàng</h2>
-    </div>
-    <div class="actions">
-        <button class="btn-add" onclick="toggleModal()">Thêm Khách Hàng</button>
-    </div>
-    </div>
-    <div class="list">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Mã</th>
-                    <th>Tên</th>
-                    <th>Địa chỉ</th>
-                    <th>Số điện thoại</th>
-                    <th>Email</th>
-                    <th>Mức độ</th>
-                    <th>Hành động</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for index, customer in enumerate(customers) %}
+    <div class="management">
+        <div class="header">
+            <h2>Danh Mục Khách Hàng</h2>
+        </div>
+        <div class="actions">
+            <button class="btn-add" onclick="toggleModal()">Thêm Khách Hàng</button>
+        </div>
+        <div class="list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã</th>
+                        <th>Tên</th>
+                        <th>Địa chỉ</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
+                        <th>Mức độ</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, customer in enumerate(customers) %}
                     <tr>
                         <td>{{ index + 1 }}</td> 
                         <td>{{ customer['customer_id'] }}</td>
@@ -44,70 +43,68 @@
                             </form>
                         </td>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <!-- Modal (Off-canvas) Thêm Khách Hàng -->
-        <div id="addCustomerModal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn" onclick="toggleModal()">&times;</span>
-                <h2>Thêm Khách Hàng Mới</h2>
-                <form action="{{ url_for('customer_bp.add_customer') }}" method="POST">
-                    <div class="form-group">
-                        <label for="customer_id" class="form-label">Mã Khách Hàng</label>
-                        <input type="text" class="form-control" id="customer_id" name="customer_id" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Tên Khách Hàng:</label>
-                        <input type="text" name="name" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="gender" class="form-label">Giới Tính</label>
-                        <select class="form-select" id="gender" name="gender" required>
-                            <option value="" disabled selected>Chọn giới tính</option>
-                            <option value="male">Nam</option>
-                            <option value="female">Nữ</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="age">Tuổi:</label>
-                        <input type="number" name="age" id="age" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="street">Số đường/nhà:</label>
-                        <input id="street" name="street" required class="form-control"></input>
-                    </div>
-                    <div class="form-group">
-                        <label for="city">Thành phố:</label>
-                        <input id="city" name="city" required class="form-control"></input>
-                    </div>
-                    <div class="form-group">
-                        <label for="postal_code">Mã Bưu Điện:</label>
-                        <input id="postal_code" name="postal_code" required class="form-control"></input>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Số Điện Thoại:</label>
-                        <input type="text" name="phone" id="phone" required>
-                    </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+             <!-- Modal (Off-canvas) Thêm Khách Hàng -->
+            <div id="addCustomerModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="toggleModal()">&times;</span>
+                    <h2>Thêm Khách Hàng Mới</h2>
+                    <form action="{{ url_for('customer_bp.add_customer') }}" method="POST">
+                        <div class="form-group">
+                            <label for="customer_id" class="form-label">Mã Khách Hàng</label>
+                            <input type="text" class="form-control" id="customer_id" name="customer_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Tên Khách Hàng:</label>
+                            <input type="text" name="name" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender" class="form-label">Giới Tính</label>
+                            <select class="form-select" id="gender" name="gender" required>
+                                <option value="" disabled selected>Chọn giới tính</option>
+                                <option value="male">Nam</option>
+                                <option value="female">Nữ</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Tuổi:</label>
+                            <input type="number" name="age" id="age" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="street">Số đường/nhà:</label>
+                            <input id="street" name="street" required class="form-control"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Thành phố:</label>
+                            <input id="city" name="city" required class="form-control"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="postal_code">Mã Bưu Điện:</label>
+                            <input id="postal_code" name="postal_code" required class="form-control"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số Điện Thoại:</label>
+                            <input type="text" name="phone" id="phone" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="role">Role:</label>
-                        <select class="form-select" name="role" id="role" required>
-                            <option value="Normal" {% if customer and customer['role'] == 'Normal' %}selected{% endif %}>Normal</option>
-                            <option value="VIP" {% if customer and customer['role'] == 'VIP' %}selected{% endif %}>VIP</option>
-                            <option value="Admin" {% if customer and customer['role'] == 'Admin' %}selected{% endif %}>Admin</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn-add">Thêm</button>
-                </form>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role:</label>
+                            <select class="form-select" name="role" id="role" required>
+                                <option value="Normal" {% if customer and customer['role'] == 'Normal' %}selected{% endif %}>Normal</option>
+                                <option value="VIP" {% if customer and customer['role'] == 'VIP' %}selected{% endif %}>VIP</option>
+                                <option value="Admin" {% if customer and customer['role'] == 'Admin' %}selected{% endif %}>Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-add">Thêm</button>
+                    </form>
+                </div>
             </div>
         </div>
-    
     </div>
-</div>
-
 {% endblock %}
