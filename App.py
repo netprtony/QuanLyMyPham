@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from order_routes import order_bp 
-
+from customer_routes import customer_bp
+from product_routes import product_bp
 client = MongoClient('mongodb://localhost:27017')
 db = client['QL_CosmeticsStore']
 customers_collection = db['Customers']
@@ -15,7 +16,10 @@ supplier_collection = db['Suppliers']
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Thiết lập secret_key cho session
 # Đăng ký Blueprint cho các route của đơn hàng
+app.register_blueprint(customer_bp)
 app.register_blueprint(order_bp)
+app.register_blueprint(product_bp)
+
 # Danh sách khách hàng và địa điểm lưu trữ tạm thời
 customers = []
 locations = []  # Danh sách địa điểm giao hàng
@@ -53,117 +57,8 @@ def logout():
 # def success():
 #     return render_template('success.html', customers=customers)
 
-####custormer####
-
-@app.route('/customer-list')
-def customer_list():
-    # Lấy dữ liệu khách hàng từ MongoDB
-    customers = list(customers_collection.find())
-    return render_template('customer_list.html', customers=customers, enumerate=enumerate)
 
 
-@app.route('/add-customer', methods=['GET', 'POST'])
-def add_customer():
-    if request.method == 'POST':
-        name = request.form['name']
-        address = request.form['address']
-        phone_number = request.form['phone_number']
-        email = request.form['email']
-
-        # Thêm dữ liệu khách hàng vào MongoDB
-        customers_collection.insert_one({
-            'name': name,
-            'address': address,
-            'phone_number': phone_number,
-            'email': email
-        })
-        return redirect(url_for('customer_list'))
-    return render_template('add_customer.html')
-
-#sửa khách hàng
-@app.route('/edit_customer', methods=['GET', 'POST'])
-def edit_customer():
-    # Lấy customer_id từ query string
-    customer_id = request.args.get('id')
-
-    # Chuyển đổi customer_id thành ObjectId nếu cần thiết (nếu sử dụng MongoDB)
-    customer = customers_collection.find_one({'customer_id': customer_id})
-
-    if request.method == 'POST':
-        # Cập nhật thông tin khách hàng từ form
-        customer['name'] = request.form['name']
-        customer['address'] = request.form['address']
-        customer['phone'] = request.form['phone']
-        customer['email'] = request.form['email']
-
-        # Cập nhật dữ liệu trong MongoDB
-        customers_collection.update_one({'customer_id': customer_id}, {'$set': customer})
-
-        return redirect(url_for('customer_list'))
-
-    return render_template('edit_customer.html', customer=customer)
-
-
-
-
-
-# xóa khách hàng
-@app.route('/delete-customer/<string:customer_id>', methods=['POST'])
-def delete_customer(customer_id):
-    # Xóa khách hàng khỏi MongoDB
-    customers_collection.delete_one({'customer_id': customer_id})
-    return redirect(url_for('customer_list'))
-
-
-#####Products###
-@app.route('/products-list')
-def product_list():
-    # Lấy dữ liệu sản phẩm từ MongoDB
-    products = list(products_collection.find())
-    return render_template('product_list.html', products=products, enumerate=enumerate)
-
-# ... (các route và hàm khác) ...
-
-@app.route('/add-product', methods=['GET', 'POST'])
-def add_product():
-    if request.method == 'POST':
-        name = request.form['name']
-        brand = request.form['brand']
-        product_type = request.form['product_type']
-        price = request.form['price']
-        quantity = request.form['quantity']
-
-        # Thêm dữ liệu sản phẩm vào MongoDB
-        products_collection.insert_one({
-            'name': name,
-            'brand': brand,
-            'product_type': product_type,
-            'price': price,
-            'quantity': quantity
-        })
-        return redirect(url_for('product_list'))
-    return render_template('add_product.html')
-
-@app.route('/edit-product/<int:product_id>', methods=['GET', 'POST'])
-def edit_product(product_id):
-    # Lấy dữ liệu sản phẩm từ MongoDB
-    product = products_collection.find_one({'_id': product_id})
-    if request.method == 'POST':
-        product['name'] = request.form['name']
-        product['brand'] = request.form['brand']
-        product['product_type'] = request.form['product_type']
-        product['price'] = request.form['price']
-        product['quantity'] = request.form['quantity']
-        # Cập nhật dữ liệu sản phẩm trong MongoDB
-        products_collection.update_one({'_id': product_id}, {'$set': product})
-        return redirect(url_for('product_list'))
-    return render_template('edit_product.html', product=product)
-
-@app.route('/delete-product/<int:product_id>')
-def delete_product(product_id):
-    # Xóa dữ liệu sản phẩm trong MongoDB
-    products_collection.delete_one({'_id': product_id})
-    return redirect(url_for('product_list'))
 
 #####location###
 @app.route('/locations')

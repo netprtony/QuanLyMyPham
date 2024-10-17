@@ -15,6 +15,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>STT</th>
                     <th>Mã Đơn Hàng</th>
                     <th>Khách Hàng</th>
                     <th>Tổng Giá</th>
@@ -23,8 +24,9 @@
                 </tr>
             </thead>
             <tbody>
-                {% for order in orders %}
+                {% for index, order in enumerate(orders) %}
                 <tr>
+                    <td>{{ index + 1 }}</td> 
                     <td class="textbox-id" onclick="window.location.href='/order-detail/{{ order['order_id'] }}'">
                         {{ order['order_id'] }}
                     </td>

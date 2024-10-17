@@ -3,17 +3,18 @@
     Danh Sách Sản Phẩm
 {% endblock %}
 {% block content %}
-    <div class="product-management">
-        <div class="product-header">
+    <div class="management">
+        <div class="header">
             <h2>Danh Mục Mỹ Phẩm</h2>
         </div>
-        <div class="product-actions">
+        <div class="actions">
             <a href="/add-product" class="btn btn-primary">Thêm Sản Phẩm</a>
         </div>
-        <div class="product-list">
+        <div class="list">
             <table class="table">
                 <thead>
                     <tr>
+                        <th>STT</th>
                         <th>Tên</th>
                         <th>Thương hiệu</th>
                         <th>Loại</th>
@@ -23,8 +24,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for product in products %}
+                    {% for index, product in enumerate(products) %}
                         <tr>
+                            <td>{{ index + 1 }}</td> 
                             <td>{{ product.name }}</td>
                             <td>{{ product.brand }}</td>
                             <td>{{ product.category }}</td>
