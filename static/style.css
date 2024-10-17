@@ -163,21 +163,21 @@ body {
 }
 
 /* Style cho phần nội dung chính */
-.customer-actions {
+.actions {
     background-color: #f0f0f0;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 20px;
 }
 
-.customer-list {
+.list {
     background-color: #f0f0f0;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 20px;
 }
 
-#customer-management {
+#management {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -290,4 +290,23 @@ body {
 .filter-form {
     display: flex;
     align-items: center;
+}
+td, th {
+    padding: 10px; /* Điều chỉnh khoảng cách xung quanh */
+    line-height: 1.5; /* Điều chỉnh khoảng cách giữa các dòng */
+    border: 1px solid #ddd; /* Thêm đường viền nếu cần */
+}
+table {
+    width: 100%; /* Tùy chỉnh theo nhu cầu */
+    border-collapse: collapse; /* Bỏ khoảng cách giữa các ô */
+}
+ /* Thay đổi con trỏ thành pointer cho ô mã hóa đơn */
+ .textbox-id {
+    cursor: pointer; /* Thay đổi con trỏ khi di chuột */
+    color: blue; /* Có thể thay đổi màu sắc để nhận biết */
+    text-decoration: underline; /* Gạch chân để giống liên kết */
+}
+/* Có thể thêm hiệu ứng hover */
+.textbox-id:hover {
+    color: darkblue; /* Đổi màu khi di chuột */
 }

@@ -3,12 +3,12 @@
     Danh Sách Khách Hàng
 {% endblock %}
 {% block content %}
-<div class="product-management">
-    <div class="product-header">
+<div class="management">
+    <div class="header">
         <h2> Danh Sách Khách Hàng</h2>
     </div>
 
-    <div class="customer-actions">
+    <div class="actions">
         <a href="/add-customer" class="btn btn-primary">Thêm Khách Hàng</a>
         <span class="filter-label">Chọn thành phố:</span>
         <form method="POST" action="{{ url_for('customer_list') }}" class="filter-form">

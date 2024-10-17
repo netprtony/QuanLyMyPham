@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from order_routes import order_bp 
 
 client = MongoClient('mongodb://localhost:27017')
 db = client['QL_CosmeticsStore']
@@ -13,7 +14,8 @@ supplier_collection = db['Suppliers']
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Thiết lập secret_key cho session
-
+# Đăng ký Blueprint cho các route của đơn hàng
+app.register_blueprint(order_bp)
 # Danh sách khách hàng và địa điểm lưu trữ tạm thời
 customers = []
 locations = []  # Danh sách địa điểm giao hàng
@@ -59,20 +61,6 @@ def customer_list():
     customers = list(customers_collection.find())
     return render_template('customer_list.html', customers=customers, enumerate=enumerate)
 
-@app.route('/customers', methods=['GET', 'POST'])
-def customer_list():
-    if request.method == 'POST':
-        selected_city = request.form.get('city')
-        # Lọc khách hàng theo thành phố
-        customers = customers_collection.find({'address.city': selected_city})
-    else:
-        # Nếu không có lọc, lấy tất cả khách hàng
-        customers = customers_collection.find()
-    
-    # Lấy danh sách các thành phố từ cơ sở dữ liệu (nếu có)
-    cities = customers_collection.distinct('address.city')
-    
-    return render_template('customer_list.html', customers=customers, locations=locations)
 
 @app.route('/add-customer', methods=['GET', 'POST'])
 def add_customer():
