@@ -201,25 +201,7 @@ body {
     cursor: pointer;
 }
 
-.btn-primary {
-    background-color: #007bff;
-    color: white;
-}
 
-.btn-secondary {
-    background-color: #6c757d;
-    color: white;
-}
-
-.btn-warning {
-    background-color: #ffc107;
-    color: white;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-    color: white;
-}
 
 .product-management {
     display: flex;
@@ -309,4 +291,119 @@ table {
 /* Có thể thêm hiệu ứng hover */
 .textbox-id:hover {
     color: darkblue; /* Đổi màu khi di chuột */
+}
+
+
+.btn-add {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+.btn-add:hover {
+    background-color: #d70000;
+}
+
+.btn-edit {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #ffc107;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+}
+.btn-edit:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+
+.btn-delete {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+.btn-delete:hover {
+    background-color: #007bff;
+    color: white;
+}
+  /* CSS cho modal (off-canvas) */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Thêm transition */
+}
+
+.modal.show {
+    display: flex; /* Hiện modal */
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 50%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease-in-out; /* Animation cho modal */
+}
+
+.modal.show .modal-content {
+    transform: scale(1); /* Tăng kích thước dần */
+}
+
+.close-btn {
+    float: right;
+    cursor: pointer;
+    color: red;
+    font-size: 20px;
+}
+
+/* Căn chỉnh form */
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    flex: 1;
+    text-align: left;
+    padding-right: 15px;
+    font-weight: bold;
+}
+
+.form-group input {
+    flex: 2;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group button {
+    margin-top: 20px;
+}
+.form-select {
+    padding: 8px;
+    flex: 2;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
