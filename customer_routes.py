@@ -36,3 +36,33 @@ def add_customer():
         # Thêm khách hàng vào MongoDB
         customers_collection.insert_one(customer_data)
         return redirect(url_for('customer_bp.customer_list'))
+#Xóa-------------------------------------------------------
+@customer_bp.route('/delete-customer/<customer_id>', methods=['POST'])
+def delete_customer(customer_id):
+    # Xóa khách hàng từ MongoDB
+    result = customers_collection.delete_one({'customer_id': customer_id})
+
+    if result.deleted_count > 0:
+        return redirect(url_for('customer_bp.customer_list'))  # Chuyển hướng về danh sách khách hàng
+    else:
+        return "Không tìm thấy khách hàng với ID này", 404
+#Sửa
+@customer_bp.route('/edit-customer/<int:customer_id>', methods=['POST'])
+def edit_customer(customer_id):
+    # Lấy dữ liệu từ form
+    name = request.form['name']
+    email = request.form['email']
+    phone = request.form['phone']
+    gender = request.form['gender']
+
+    # Cập nhật thông tin khách hàng trong MongoDB
+    customers_collection.update_one(
+        {'customer_id': customer_id},
+        {'$set': {
+            'name': name,
+            'email': email,
+            'phone': phone,
+            'gender': gender
+        }}
+    )
+    return redirect(url_for('customer_bp.customer_list'))

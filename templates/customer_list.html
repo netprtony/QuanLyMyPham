@@ -36,14 +36,18 @@
                         <td>{{ customer['email'] }}</td>
                         <td>{{ customer['role'] }}</td>
                         <td>
-                            <button href="/edit_customer?id={{ customer['_id']['$oid'] }}" class="btn-edit">Sửa</button>
-                            <button class="btn-delete" onclick="deleteCustomer(this)" data-id="{{ customer.customer_id }}">Xóa</button>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="offcanvas" data-bs-target="#editCustomerCanvas{{ customer['customer_id'] }}">
+                                Sửa
+                            </button>
+                            <form action="" method="POST" style="display:inline;">
+                                <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">Xóa</button>
+                            </form>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-           <!-- Modal (Off-canvas) Thêm Khách Hàng -->
+        <!-- Modal (Off-canvas) Thêm Khách Hàng -->
         <div id="addCustomerModal" class="modal">
             <div class="modal-content">
                 <span class="close-btn" onclick="toggleModal()">&times;</span>
@@ -78,7 +82,7 @@
                         <input id="city" name="city" required class="form-control"></input>
                     </div>
                     <div class="form-group">
-                        <label for="postal_code">Zip code:</label>
+                        <label for="postal_code">Mã Bưu Điện:</label>
                         <input id="postal_code" name="postal_code" required class="form-control"></input>
                     </div>
                     <div class="form-group">
@@ -100,6 +104,37 @@
                     </div>
                     <button type="submit" class="btn-add">Thêm</button>
                 </form>
+            </div>
+        </div>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="editCustomerCanvas{{ customer['customer_id'] }}" aria-labelledby="editCustomerLabel">
+            <div class="offcanvas-header">
+              <h5 id="editCustomerLabel">Chỉnh Sửa Khách Hàng</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <form action="{{ url_for('customer_bp.edit_customer', customer_id=customer['customer_id']) }}" method="POST">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Tên khách hàng</label>
+                  <input type="text" class="form-control" id="name" name="name" value="{{ customer['name'] }}">
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" value="{{ customer['email'] }}">
+                </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Số điện thoại</label>
+                  <input type="text" class="form-control" id="phone" name="phone" value="{{ customer['phone'] }}">
+                </div>
+                <div class="mb-3">
+                  <label for="gender" class="form-label">Giới tính</label>
+                  <select class="form-select" id="gender" name="gender">
+                    <option value="male" {% if customer['gender'] == 'male' %}selected{% endif %}>Nam</option>
+                    <option value="female" {% if customer['gender'] == 'female' %}selected{% endif %}>Nữ</option>
+                  </select>
+                </div>
+                <!-- Các trường khác tương tự -->
+                <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+              </form>
             </div>
         </div>
     </div>
