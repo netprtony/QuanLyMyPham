@@ -407,3 +407,46 @@ table {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url('/static/images/background.jpg'); /* Đường dẫn đến ảnh nền */
+    background-size: cover; /* Ảnh sẽ bao phủ toàn bộ nền */
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.sidebar {
+    background-color: rgba(0, 0, 0, 0.8); /* Sidebar đen mờ */
+    padding: 20px;
+    height: 100vh;
+}
+
+.sidebar a {
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    text-align: left;
+    display: block;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: #007bff;
+}
+
+.main-content {
+    background-color: rgba(255, 255, 255, 0.8); /* Màu nền trắng với độ mờ */
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.navbar {
+    background-color: rgba(0, 123, 255, 0.9); /* Thanh navbar xanh mờ */
+}
+
+.navbar-brand, .navbar a {
+    color: white !important;
+}
