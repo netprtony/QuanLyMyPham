@@ -13,6 +13,7 @@ def product_list():
 @product_bp.route('/add-product', methods=['GET', 'POST'])
 def add_product():
     if request.method == 'POST':
+        id = request.form['product_id']
         name = request.form['name']
         brand = request.form['brand']
         product_type = request.form['product_type']
@@ -21,13 +22,14 @@ def add_product():
 
         # Thêm dữ liệu sản phẩm vào MongoDB
         products_collection.insert_one({
+            'product_id': id,
             'name': name,
             'brand': brand,
             'product_type': product_type,
             'price': price,
             'quantity': quantity
         })
-        return redirect(url_for('product_list'))
+        return redirect(url_for('product_bp.product_list'))
     return render_template('add_product.html')
 
 @product_bp.route('/edit-product/<int:product_id>', methods=['GET', 'POST'])
