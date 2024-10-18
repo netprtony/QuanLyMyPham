@@ -13,7 +13,7 @@ def customer_list():
 
 @customer_bp.route('/customer/<customer_id>')
 def get_customer(customer_id):
-    customer = customers_collection.find_one({"_id": ObjectId(customer_id)})
+    customer = customers_collection.find_one({"customer_id": customer_id})
     return render_template('customer_list.html', customer=customer)
 
 @customer_bp.route('/add-customer', methods=['POST'])
@@ -55,42 +55,22 @@ def delete_customer(customer_id):
 #Sửa
 @customer_bp.route('/edit_customer/<customer_id>', methods=['GET', 'POST'])
 def edit_customer(customer_id):
-    if request.method == 'GET':
-        # Lấy thông tin khách hàng dựa trên customer_id
-        customer = customers_collection.find_one({"_id": ObjectId(customer_id)})
-        if customer:
-            return render_template('edit_customer.html', customer=customer)
-        else:
-            return "Khách hàng không tồn tại", 404
+    customer = get_customer(customer_id)  # Lấy thông tin khách hàng
+    if not customer:
+        return "Khách hàng không tồn tại", 404
 
     if request.method == 'POST':
         # Cập nhật thông tin khách hàng
-        name = request.form['name']
-        email = request.form['email']
-        phone = request.form['phone']
-        gender = request.form['gender']
-        age = request.form['age']
-        street = request.form['street']
-        city = request.form['city']
-        postal_code = request.form['postal_code']
-        preferred_delivery_location = request.form['preferred_delivery_location']
-        role = request.form['role']
-        # Cập nhật thông tin khách hàng trong MongoDB
-        customers_collection.update_one(
-            {"_id": ObjectId(customer_id)},
-            {
-                "$set": {
-                    "name": name,
-                    "email": email,
-                    "phone": phone,
-                    "age": age,
-                    "gender" : gender,
-                    "address.street": street,
-                    "address.city": city,
-                    "address.postal_code": postal_code,
-                    "preferred_delivery_location": preferred_delivery_location,
-                    "role": role
-                }
-            }
-        )
-        return redirect(url_for('customer_bp.customer_list'))
+        customer['name'] = request.form['name']
+        customer['email'] = request.form['email']
+        customer['phone'] = request.form['phone']
+        customer['gender'] = request.form['gender']
+        customer['age'] = request.form['age']
+        customer['address']['street'] = request.form['street']
+        customer['address']['city'] = request.form['city']
+        customer['address']['postal_code'] = request.form['postal_code']
+        customer['preferred_delivery_location'] = request.form['preferred_delivery_location']
+        customer['role'] = request.form['role']
+        customers_collection.update_one({'customer_id': customer_id}, {'$set': customer})     
+        return redirect(url_for('customer_bp.edit_customer'))
+    return render_template('customer_list.html', customer=customer , enumerate=enumerate)

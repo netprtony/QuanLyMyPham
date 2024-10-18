@@ -45,8 +45,12 @@ def edit_product(product_id):
         return redirect(url_for('product_list'))
     return render_template('edit_product.html', product=product)
 
-@product_bp.route('/delete-product/<int:product_id>')
+@product_bp.route('/delete_product/<product_id>', methods=['POST'])
 def delete_product(product_id):
-    # Xóa dữ liệu sản phẩm trong MongoDB
-    products_collection.delete_one({'_id': product_id})
-    return redirect(url_for('product_list'))
+    # Xóa khách hàng từ MongoDB
+    result = products_collection.delete_one({'product_id': product_id})
+
+    if result.deleted_count > 0:
+        return redirect(url_for('product_bp.product_list'))  # Chuyển hướng về danh sách mỹ phẩm
+    else:
+        return "Không tìm thấy sản phẩm với ID này", 404

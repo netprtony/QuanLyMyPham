@@ -10,7 +10,7 @@
         <div class="actions">
             <a href="/add-product" class="btn btn-primary">Thêm Sản Phẩm</a>
         </div>
-        <div class="list">
+        <div class="">
             <table class="table">
                 <thead>
                     <tr>
@@ -34,7 +34,9 @@
                             <td>{{ product.stock }}</td>
                             <td>
                                 <a href="/edit_product.html/{{ product._id }}" class="btn btn-warning">Sửa</a>
-                                <a href="/delete-product/{{ product._id }}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+                                <form action="{{ url_for('product_bp.delete_product', product_id=product['product_id']) }}" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa sẩn phẩm này không?');">Xóa</button>
+                                </form>
                             </td>
                         </tr>
                     {% endfor %}

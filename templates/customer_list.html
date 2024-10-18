@@ -10,7 +10,7 @@
         <div class="actions">
             <button class="btn-add" onclick="toggleModal()">Thêm Khách Hàng</button>
         </div>
-        <div class="list">
+        <div class="">
             <table class="table">
                 <thead>
                     <tr>
@@ -25,9 +25,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for index, customer in enumerate(customers) %}
+                    {% for  customer in customers %}
                     <tr>
-                        <td>{{ index + 1 }}</td> 
+                        <td>{{ loop.index }}</td> 
                         <td>{{ customer['customer_id'] }}</td>
                         <td>{{ customer['name'] }}</td>
                         <td>{{ customer.address.street }}, {{ customer['address']['city'] }}, {{ customer.address.postal_code }}</td>
@@ -35,10 +35,12 @@
                         <td>{{ customer['email'] }}</td>
                         <td>{{ customer['role'] }}</td>
                         <td>
-                            <button onclick="{{ url_for('customer_bp.edit_customer', customer_id=customer['_id']['$oid']) }}" class="btn-edit">
-                                Sửa
-                            </button>  
-                            <form action="{{ url_for('customer_bp.delete_customer', customer_id=customer['customer_id']) }}" method="POST" style="display:inline;">
+
+                            <form action="{{ url_for('customer_bp.edit_customer', customer_id=customer['customer_id']) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn-edit" onclick="return confirm('Bạn có chắc chắn muốn sửa khách hàng này không?');">Sửa</button>
+                            </form>
+
+                            <form action="{{ url_for('customer_bp.delete_customer', customer_id=customer['_id']) }}" method="POST" style="display:inline;">
                                 <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">Xóa</button>
                             </form>
                         </td>

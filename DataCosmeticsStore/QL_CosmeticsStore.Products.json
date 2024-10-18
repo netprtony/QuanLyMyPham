@@ -133,13 +133,11 @@
     "$oid": "66de598f328b007ec8cf7dba"
   },
   "product_id": "New ID",
-  "product_name": "Detox",
-  "category": {
-    "category_id": "Detoxs",
-    "category_name": "Detoxss"
-  },
+  "name": "Detox",
+  "category": "Detoxss",
+  "brand": "Nars",
   "price": 500000,
-  "quantity": 60,
+  "stock": 60,
   "description": "Tẩy tế bào chết"
 },
 {
@@ -147,13 +145,11 @@
     "$oid": "66de598f328b007ec8cf7dbc"
   },
   "product_id": "PROD001",
-  "product_name": "Moisturizing Cream",
-  "category": {
-    "category_id": "Skincare",
-    "category_name": "Skincare Products"
-  },
+  "name": "Moisturizing Cream",
+  "category":"Skincare",
+  "brand": "Nars",
   "price": 300000,
-  "quantity": 100,
+  "stock": 100,
   "description": "Kem dưỡng ẩm cho da"
 },
 {
@@ -161,13 +157,11 @@
     "$oid": "66de598f328b007ec8cf7dbd"
   },
   "product_id": "PROD002",
-  "product_name": "Sunscreen SPF 50",
-  "category": {
-    "category_id": "Skincare",
-    "category_name": "Skincare Products"
-  },
+  "name": "Sunscreen SPF 50",
+  "category":"Skincare",
+  "brand": "Nars",
   "price": 250000,
-  "quantity": 80,
+  "stock": 80,
   "description": "Kem chống nắng bảo vệ da"
 },
 {
@@ -175,13 +169,11 @@
     "$oid": "66de598f328b007ec8cf7dbe"
   },
   "product_id": "PROD003",
-  "product_name": "Vitamin C Serum",
-  "category": {
-    "category_id": "Skincare",
-    "category_name": "Skincare Products"
-  },
+  "name": "Vitamin C Serum",
+  "category":"Skincare",
+  "brand": "Nars",
   "price": 400000,
-  "quantity": 50,
+  "stock": 50,
   "description": "Serum vitamin C làm sáng da"
 },
 {
@@ -189,13 +181,11 @@
     "$oid": "66de598f328b007ec8cf7dbf"
   },
   "product_id": "PROD004",
-  "product_name": "Hydrating Face Mask",
-  "category": {
-    "category_id": "Skincare",
-    "category_name": "Skincare Products"
-  },
+  "name": "Hydrating Face Mask",
+  "category": "Skincare Products",
+  "brand": "Nars",
   "price": 150000,
-  "quantity": 75,
+  "stock": 75,
   "description": "Mặt nạ cấp nước cho da"
 },
 {
@@ -203,13 +193,11 @@
     "$oid": "66de598f328b007ec8cf7dc0"
   },
   "product_id": "PROD005",
-  "product_name": "Charcoal Face Wash",
-  "category": {
-    "category_id": "Cleansers",
-    "category_name": "Cleansing Products"
-  },
+  "name": "Charcoal Face Wash",
+  "category": "Cleansing Products",
+  "brand": "Nars",
   "price": 120000,
-  "quantity": 90,
+  "stock": 90,
   "description": "Sữa rửa mặt than hoạt tính"
 },
 {
@@ -217,13 +205,11 @@
     "$oid": "66de598f328b007ec8cf7dc1"
   },
   "product_id": "PROD006",
-  "product_name": "Exfoliating Scrub",
-  "category": {
-    "category_id": "Exfoliants",
-    "category_name": "Exfoliating Products"
-  },
+  "name": "Exfoliating Scrub",
+  "category":"Exfoliating Products",
+  "brand": "Nars",
   "price": 220000,
-  "quantity": 70,
+  "stock": 70,
   "description": "Tẩy tế bào chết cho da mặt"
 },
 {
@@ -231,13 +217,11 @@
     "$oid": "66de598f328b007ec8cf7dc2"
   },
   "product_id": "PROD007",
-  "product_name": "Retinol Cream",
-  "category": {
-    "category_id": "Anti-aging",
-    "category_name": "Anti-aging Products"
-  },
+  "name": "Retinol Cream",
+  "category":"Anti-aging Products",
+  "brand": "Nars",
   "price": 500000,
-  "quantity": 40,
+  "stock": 40,
   "description": "Kem chống lão hóa da"
 },
 {
@@ -245,27 +229,23 @@
     "$oid": "66de598f328b007ec8cf7dc3"
   },
   "product_id": "PROD008",
-  "product_name": "Nourishing Hair Oil",
-  "category": {
-    "category_id": "Haircare",
-    "category_name": "Haircare Products"
-  },
+  "name": "Nourishing Hair Oil",
+  "category": "Haircare Products",
+  "brand": "Nars",
   "price": 350000,
-  "quantity": 60,
+  "stock": 60,
   "description": "Dầu dưỡng tóc phục hồi"
 },
 {
   "_id": {
     "$oid": "66de598f328b007ec8cf7dc4"
-  },
+  }, 
   "product_id": "PROD009",
-  "product_name": "Lip Balm",
-  "category": {
-    "category_id": "Cosmetics",
-    "category_name": "Cosmetics Products"
-  },
+  "name": "Lip Balm",
+  "category":"Cosmetics Products",
+  "brand": "Nars",
   "price": 75000,
-  "quantity": 150,
+  "stock": 150,
   "description": "Son dưỡng môi"
 },
 {
@@ -273,12 +253,10 @@
     "$oid": "66de598f328b007ec8cf7dc5"
   },
   "product_id": "PROD010",
-  "product_name": "Body Lotion",
-  "category": {
-    "category_id": "Bodycare",
-    "category_name": "Bodycare Products"
-  },
+  "name": "Body Lotion",
+  "category": "Bodycare Products",
+  "brand": "Nars",  
   "price": 200000,
-  "quantity": 80,
+  "stock": 80,
   "description": "Sữa dưỡng thể cho cơ thể"
 }]
