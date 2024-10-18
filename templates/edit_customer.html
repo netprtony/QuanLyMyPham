@@ -3,27 +3,73 @@
 {% block title %}Chỉnh sửa khách hàng{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h2>Chỉnh sửa khách hàng</h2>
-    <form method="POST" >
-        <div class="form-group">
-            <label for="name">Tên:</label>
-            <input type="text" id="name" name="name" value="{{ customer['name'] }}" required>
+<div class="container mt-5">
+    <h1>Sửa Thông Tin Khách Hàng</h1>
+    <form action="{{ url_for('edit_customer', customer_id=customer['_id']['$oid']) }}" method="POST">
+        <!-- Tên -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Tên</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ customer['name'] }}" required>
         </div>
-        <div class="form-group">
-            <label for="address">Địa chỉ:</label>
-            <input type="text" id="address" name="address" value="{{ customer['address']['street'] }}" required>
+        
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ customer['email'] }}" required>
         </div>
-        <div class="form-group">
-            <label for="phone">Số điện thoại:</label>
-            <input type="text" id="phone" name="phone" value="{{ customer['phone'] }}" required>
+
+        <!-- Số điện thoại -->
+        <div class="mb-3">
+            <label for="phone" class="form-label">Số Điện Thoại</label>
+            <input type="text" class="form-control" id="phone" name="phone" value="{{ customer['phone'] }}" required>
         </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="{{ customer['email'] }}" required>
+
+        <!-- Địa chỉ -->
+        <h5>Địa chỉ</h5>
+        <div class="mb-3">
+            <label for="street" class="form-label">Đường</label>
+            <input type="text" class="form-control" id="street" name="street" value="{{ customer['address']['street'] }}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Cập nhật</button>
-        <a href="{{ url_for('customer_list') }}" class="btn btn-secondary">Hủy</a>
+        <div class="mb-3">
+            <label for="city" class="form-label">Thành Phố</label>
+            <input type="text" class="form-control" id="city" name="city" value="{{ customer['address']['city'] }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="postal_code" class="form-label">Mã Bưu Chính</label>
+            <input type="text" class="form-control" id="postal_code" name="postal_code" value="{{ customer['address']['postal_code'] }}" required>
+        </div>
+
+        <!-- Preferred Delivery Location -->
+        <div class="mb-3">
+            <label for="preferred_delivery_location" class="form-label">Địa Điểm Giao Hàng Ưu Tiên</label>
+            <input type="text" class="form-control" id="preferred_delivery_location" name="preferred_delivery_location" value="{{ customer['preferred_delivery_location'] }}" required>
+        </div>
+        <!-- Tuổi -->
+        <div class="mb-3">
+            <label for="age" class="form-label">Tuổi</label>
+            <input type="number" class="form-control" id="age" name="age" value="{{ customer['age'] }}" required>
+        </div>
+        <!-- Giới tính -->
+        <div class="mb-3">
+            <label for="role" class="form-label">Giới tính</label>
+            <select class="form-control" id="gender" name="gender" required>
+                <option value="Nam" {% if customer['gender'] == 'Nam' %}selected{% endif %}>Nam</option>
+                <option value="Nữ" {% if customer['gender'] == 'Nữ' %}selected{% endif %}>Nữ</option>
+            </select>
+        </div>
+        <!-- Vai trò -->
+        <div class="mb-3">
+            <label for="role" class="form-label">Vai Trò</label>
+            <select class="form-control" id="role" name="role" required>
+                <option value="Normal" {% if customer['role'] == 'Normal' %}selected{% endif %}>Normal</option>
+                <option value="VIP" {% if customer['role'] == 'VIP' %}selected{% endif %}>VIP</option>
+                <option value="Admin" {% if customer['role'] == 'Admin' %}selected{% endif %}>Admin</option>
+            </select>
+        </div>
+
+        <!-- Nút Lưu -->
+        <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+        <a href="{{ url_for('customers') }}" class="btn btn-secondary">Quay Lại</a>
     </form>
 </div>
 {% endblock %}

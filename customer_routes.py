@@ -43,7 +43,7 @@ def add_customer():
         customers_collection.insert_one(customer_data)
         return redirect(url_for('customer_bp.customer_list'))
 #Xóa-------------------------------------------------------
-@customer_bp.route('/delete-customer/<customer_id>', methods=['POST'])
+@customer_bp.route('/delete_customer/<customer_id>', methods=['POST'])
 def delete_customer(customer_id):
     # Xóa khách hàng từ MongoDB
     result = customers_collection.delete_one({'customer_id': customer_id})
@@ -53,30 +53,44 @@ def delete_customer(customer_id):
     else:
         return "Không tìm thấy khách hàng với ID này", 404
 #Sửa
-@customer_bp.route('/customer-list/<customer_id>', methods=['POST'])
+@customer_bp.route('/edit_customer/<customer_id>', methods=['GET', 'POST'])
 def edit_customer(customer_id):
-    # Lấy dữ liệu từ form
-    updated_data = {
-        "name": request.form['name'],
-        "email": request.form['email'],
-        "phone": request.form['phone'],
-        "gender": request.form['gender'],
-        "age": int(request.form['age']),
-        "address": {
-            "street": request.form['street'],
-            "city": request.form['city'],
-            "postal_code": request.form['postal_code']
-        },
-        "preferred_delivery_location": request.form['preferred_delivery_location'],
-        "role": request.form['role']
-    }
+    if request.method == 'GET':
+        # Lấy thông tin khách hàng dựa trên customer_id
+        customer = customers_collection.find_one({"_id": ObjectId(customer_id)})
+        if customer:
+            return render_template('edit_customer.html', customer=customer)
+        else:
+            return "Khách hàng không tồn tại", 404
 
-    # Cập nhật dữ liệu trong MongoDB
-    result = customers_collection.update_one({"_id": ObjectId(customer_id)}, {"$set": updated_data})
-
-    if result.modified_count > 0:
-        flash("Cập nhật thông tin khách hàng thành công!", "success")
-    else:
-        flash("Không có thay đổi nào!", "warning")
-
-    return redirect(url_for('customer_bp.list_customers'))
+    if request.method == 'POST':
+        # Cập nhật thông tin khách hàng
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        gender = request.form['gender']
+        age = request.form['age']
+        street = request.form['street']
+        city = request.form['city']
+        postal_code = request.form['postal_code']
+        preferred_delivery_location = request.form['preferred_delivery_location']
+        role = request.form['role']
+        # Cập nhật thông tin khách hàng trong MongoDB
+        customers_collection.update_one(
+            {"_id": ObjectId(customer_id)},
+            {
+                "$set": {
+                    "name": name,
+                    "email": email,
+                    "phone": phone,
+                    "age": age,
+                    "gender" : gender,
+                    "address.street": street,
+                    "address.city": city,
+                    "address.postal_code": postal_code,
+                    "preferred_delivery_location": preferred_delivery_location,
+                    "role": role
+                }
+            }
+        )
+        return redirect(url_for('customer_bp.customer_list'))

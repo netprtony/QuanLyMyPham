@@ -35,10 +35,10 @@
                         <td>{{ customer['email'] }}</td>
                         <td>{{ customer['role'] }}</td>
                         <td>
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editCustomerModal{{ customer['_id']['$oid'] }}">
+                            <button onclick="{{ url_for('customer_bp.edit_customer', customer_id=customer['_id']['$oid']) }}" class="btn-edit">
                                 Sửa
                             </button>  
-                            <form action="" method="POST" style="display:inline;">
+                            <form action="{{ url_for('customer_bp.delete_customer', customer_id=customer['customer_id']) }}" method="POST" style="display:inline;">
                                 <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">Xóa</button>
                             </form>
                         </td>
