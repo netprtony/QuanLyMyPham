@@ -7,10 +7,16 @@
         <div class="header">
             <h2>Danh Mục Khách Hàng</h2>
         </div>
-        <div class="actions">
-            <button class="btn-add" onclick="toggleModalAdd()">Thêm Khách Hàng</button>
+        <div class="actions row">
+            <button class="btn-add col-2" onclick="toggleModalAdd()">Thêm Khách Hàng</button>
+            <!-- Thanh tìm kiếm khách hàng theo Mã Khách Hàng -->
+            <form action="{{ url_for('customer_bp.search_customer') }}" method="GET" class="d-flex mb-3 col-10">
+                <input class="form-control" type="search" name="customer_id" placeholder="Tìm kiếm Mã Khách Hàng" aria-label="Search" required>
+                <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+            </form>
+
         </div>
-        <div class="list">
+        <div class="customer-list">
             <table class="table">
                 <thead>
                     <tr>
@@ -27,27 +33,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for  customer in customers %}
-                    <tr>
-                        <td>{{ loop.index }}</td> 
-                        <td>{{ customer['customer_id'] }}</td>
-                        <td>{{ customer['name'] }}</td>
-                        <td>{{ customer['gender'] }}</td>
-                        <td>{{ customer['age'] }}</td>
-                        <td>{{ customer.address.street }}, {{ customer['address']['city'] }}, {{ customer.address.postal_code }}</td>
-                        <td>{{ customer['phone'] }}</td>
-                        <td>{{ customer['email'] }}</td>
-                        <td>{{ customer['role'] }}</td>
-                        <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editCustomer('{{ customer['customer_id'] }}', '{{ customer['name'] }}', '{{ customer['gender'] }}', '{{ customer['age'] }}', '{{ customer.address.street }}', '{{ customer.address.city }}', '{{ customer.address.postal_code }}', '{{ customer['phone'] }}', '{{ customer['email'] }}', '{{ customer['role'] }}')">
-                                Sửa
-                            </button>
-                            <form action="{{ url_for('customer_bp.delete_customer', customer_id=customer['customer_id']) }}" method="POST" style="display:inline;">
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">Xóa</button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
+                    {% if customers %}
+                        {% for  customer in customers %}
+                        <tr>
+                            <td>{{ loop.index }}</td> 
+                            <td>{{ customer['customer_id'] }}</td>
+                            <td>{{ customer['name'] }}</td>
+                            <td>{{ customer['gender'] }}</td>
+                            <td>{{ customer['age'] }}</td>
+                            <td>{{ customer.address.street }}, {{ customer['address']['city'] }}, {{ customer.address.postal_code }}</td>
+                            <td>{{ customer['phone'] }}</td>
+                            <td>{{ customer['email'] }}</td>
+                            <td>{{ customer['role'] }}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editCustomer('{{ customer['customer_id'] }}', '{{ customer['name'] }}', '{{ customer['gender'] }}', '{{ customer['age'] }}', '{{ customer.address.street }}', '{{ customer.address.city }}', '{{ customer.address.postal_code }}', '{{ customer['phone'] }}', '{{ customer['email'] }}', '{{ customer['role'] }}')">
+                                    Sửa
+                                </button>
+                                <form action="{{ url_for('customer_bp.delete_customer', customer_id=customer['customer_id']) }}" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">Xóa</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="8" class="text-center">{{ message or "Không có khách hàng nào" }}</td>
+                        </tr>
+                    {% endif %}
                 </tbody>
             </table>
             <!-- Modal (Off-canvas) Thêm Khách Hàng -->

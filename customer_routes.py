@@ -83,3 +83,17 @@ def update_customer():
     )
 
     return redirect(url_for('customer_bp.customer_list'))
+#Tìm kiếm khách hàng theo mã
+@customer_bp.route('/search_customer', methods=['GET'])
+def search_customer():
+    customer_id = request.args.get('customer_id')
+
+    # Tìm khách hàng theo customer_id trong MongoDB
+    customer = customers_collection.find_one({'customer_id': customer_id})
+
+    if customer:
+        # Nếu tìm thấy khách hàng, trả về trang kết quả
+        return render_template('customer_list.html', customers=[customer])
+    else:
+        # Nếu không tìm thấy, có thể trả về một thông báo lỗi hoặc trang trắng
+        return render_template('customer_list.html', customers=[], message="Không tìm thấy khách hàng")
