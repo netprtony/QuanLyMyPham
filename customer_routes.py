@@ -11,10 +11,11 @@ def customer_list():
     customers = customers_collection.find()
     return render_template('customer_list.html', customers=customers, enumerate=enumerate)
 
-@customer_bp.route('/customer/<customer_id>')
+
+@customer_bp.route('/edit-customer/<customer_id>',methods=['POST'])
 def get_customer(customer_id):
     customer = customers_collection.find_one({"customer_id": customer_id})
-    return render_template('customer_list.html', customer=customer)
+    return render_template('edit_customer.html', customer=customer)
 
 @customer_bp.route('/add-customer', methods=['POST'])
 def add_customer():
@@ -53,24 +54,33 @@ def delete_customer(customer_id):
     else:
         return "Không tìm thấy khách hàng với ID này", 404
 #Sửa
-@customer_bp.route('/edit_customer/<customer_id>', methods=['GET', 'POST'])
-def edit_customer(customer_id):
-    customer = get_customer(customer_id)  # Lấy thông tin khách hàng
-    if not customer:
-        return "Khách hàng không tồn tại", 404
+@customer_bp.route('/update_customer', methods=['POST'])
+def update_customer():
+    customer_id = request.form['customer_id']
+    name = request.form['name']
+    gender = request.form['gender']
+    age = request.form['age']
+    street = request.form['street']
+    city = request.form['city']
+    postal_code = request.form['postal_code']
+    phone = request.form['phone']
+    email = request.form['email']
+    role = request.form['role']
 
-    if request.method == 'POST':
-        # Cập nhật thông tin khách hàng
-        customer['name'] = request.form['name']
-        customer['email'] = request.form['email']
-        customer['phone'] = request.form['phone']
-        customer['gender'] = request.form['gender']
-        customer['age'] = request.form['age']
-        customer['address']['street'] = request.form['street']
-        customer['address']['city'] = request.form['city']
-        customer['address']['postal_code'] = request.form['postal_code']
-        customer['preferred_delivery_location'] = request.form['preferred_delivery_location']
-        customer['role'] = request.form['role']
-        customers_collection.update_one({'customer_id': customer_id}, {'$set': customer})     
-        return redirect(url_for('customer_bp.edit_customer'))
-    return render_template('customer_list.html', customer=customer , enumerate=enumerate)
+    # Cập nhật khách hàng trong MongoDB
+    customers_collection.update_one(
+        {'customer_id': customer_id},
+        {'$set': {
+            'name': name,
+            'gender': gender,
+            'age': age,
+            'address.street': street,
+            'address.city': city,
+            'address.postal_code': postal_code,
+            'phone': phone,
+            'email': email,
+            'role': role
+        }}
+    )
+
+    return redirect(url_for('customer_list'))
