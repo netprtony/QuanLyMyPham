@@ -4,21 +4,23 @@ from bson.objectid import ObjectId
 from order_routes import order_bp 
 from customer_routes import customer_bp
 from product_routes import product_bp
+from supplier_routes import supplier_bp
 client = MongoClient('mongodb://localhost:27017')
 db = client['QL_CosmeticsStore']
 customers_collection = db['Customers']
 delivery_collection = db['Deliveries']
 products_collection = db['Products']
 order_collection = db['Orders']
-supplier_collection = db['Suppliers']
+
 
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Thiết lập secret_key cho session
 # Đăng ký Blueprint cho các route của đơn hàng
-app.register_blueprint(customer_bp)
+app.register_blueprint(customer_bp, url_prefix='/customer')
 app.register_blueprint(order_bp)
 app.register_blueprint(product_bp)
+app.register_blueprint(supplier_bp)
 
 # Danh sách khách hàng và địa điểm lưu trữ tạm thời
 customers = []
