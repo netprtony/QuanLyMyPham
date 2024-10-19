@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for
 from pymongo import MongoClient
-from bson.objectid import ObjectId
 client = MongoClient('mongodb://localhost:27017/')
 db = client['QL_CosmeticsStore']
 customers_collection = db['Customers']
