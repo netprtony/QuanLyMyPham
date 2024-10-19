@@ -1,9 +1,5 @@
 
-// Hàm để bật/tắt modal (off-canvas)
-function toggleModalAdd() {
-    var modal = document.getElementById('addCustomerModal');
-    modal.classList.toggle('show'); // Thêm lớp show khi hiển thị
-}
+
 
 
 

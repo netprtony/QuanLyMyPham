@@ -101,14 +101,9 @@ body {
     margin-top: 20px;
 }
 
-.table th, .table td {
-    text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-}
 
 .table th {
-    background-color: #f0f0f0;
+    background-color: #e60b0b;
 }
 
 /* Style cho nút */
@@ -136,7 +131,7 @@ body {
 
 .btn-danger {
     background-color: #dc3545;
-    color: white;
+    color: rgb(211, 21, 21);
 }
 
 /* Style cho form */
@@ -172,7 +167,7 @@ body {
 }
 
 .list {
-    background-color: #f0f0f0;
+    background-color: #ff2a2a;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 20px;
@@ -188,12 +183,9 @@ body {
 .table th, .table td {
     text-align: left;
     padding: 8px;
-    border-bottom: 1px solid #ddd;
 }
 
-.table th {
-    background-color: #f0f0f0;
-}
+
 
 .btn {
     padding: 8px 16px;

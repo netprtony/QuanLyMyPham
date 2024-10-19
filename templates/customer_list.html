@@ -7,10 +7,24 @@
         <div class="header">
             <h2>Danh Mục Khách Hàng</h2>
         </div>
-        <div class="actions">
-            <button class="btn-add" onclick="toggleModalAdd()">Thêm Khách Hàng</button>
+        <div class="actions row">
+            <button class="btn-add col-2" data-bs-toggle="modal" data-bs-target="#addCustomer">Thêm Khách Hàng</button>
+            <!-- Thanh tìm kiếm khách hàng theo Mã Khách Hàng -->
+            <form action="{{ url_for('customer_bp.search_customer') }}" method="GET" class="d-flex mb-3 col-5">
+                <input class="form-control" type="search" name="customer_id" placeholder="Tìm kiếm Mã Khách Hàng" aria-label="Search" required>
+                <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+            </form>
+            <div class="btn-group col-2">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Import Dữ Liệu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#importCSVModal">Import từ CSV</a></li>
+                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#importJSONModal">Import từ JSON</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="list">
+        <div class="customer-list">
             <table class="table">
                 <thead>
                     <tr>
@@ -27,94 +41,108 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for  customer in customers %}
-                    <tr>
-                        <td>{{ loop.index }}</td> 
-                        <td>{{ customer['customer_id'] }}</td>
-                        <td>{{ customer['name'] }}</td>
-                        <td>{{ customer['gender'] }}</td>
-                        <td>{{ customer['age'] }}</td>
-                        <td>{{ customer.address.street }}, {{ customer['address']['city'] }}, {{ customer.address.postal_code }}</td>
-                        <td>{{ customer['phone'] }}</td>
-                        <td>{{ customer['email'] }}</td>
-                        <td>{{ customer['role'] }}</td>
-                        <td>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editCustomer('{{ customer['customer_id'] }}', '{{ customer['name'] }}', '{{ customer['gender'] }}', '{{ customer['age'] }}', '{{ customer.address.street }}', '{{ customer.address.city }}', '{{ customer.address.postal_code }}', '{{ customer['phone'] }}', '{{ customer['email'] }}', '{{ customer['role'] }}')">
-                                Sửa
-                            </button>
-                            <form action="{{ url_for('customer_bp.delete_customer', customer_id=customer['customer_id']) }}" method="POST" style="display:inline;">
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">Xóa</button>
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
+                    {% if customers %}
+                        {% for  customer in customers %}
+                        <tr>
+                            <td>{{ loop.index }}</td> 
+                            <td>{{ customer['customer_id'] }}</td>
+                            <td>{{ customer['name'] }}</td>
+                            <td>{{ customer['gender'] }}</td>
+                            <td>{{ customer['age'] }}</td>
+                            <td>{{ customer.address.street }}, {{ customer['address']['city'] }}, {{ customer.address.postal_code }}</td>
+                            <td>{{ customer['phone'] }}</td>
+                            <td>{{ customer['email'] }}</td>
+                            <td>{{ customer['role'] }}</td>
+                            <td class="row">
+                                <button type="button" class="btn btn-warning col-5" data-bs-toggle="modal" data-bs-target="#editCustomer" onclick="editCustomer('{{ customer['customer_id'] }}', '{{ customer['name'] }}', '{{ customer['gender'] }}', '{{ customer['age'] }}', '{{ customer.address.street }}', '{{ customer.address.city }}', '{{ customer.address.postal_code }}', '{{ customer['phone'] }}', '{{ customer['email'] }}', '{{ customer['role'] }}')">
+                                    Sửa
+                                </button>
+                                <form class="col-5" action="{{ url_for('customer_bp.delete_customer', customer_id=customer['customer_id']) }}" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">Xóa</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="8" class="text-center">{{ message or "Không có khách hàng nào" }}</td>
+                        </tr>
+                    {% endif %}
                 </tbody>
             </table>
             <!-- Modal (Off-canvas) Thêm Khách Hàng -->
-            <div id="addCustomerModal" class="modal">
-                <div class="modal-content">
-                    <span class="close-btn" onclick="toggleModalAdd()">&times;</span>
-                    <h2>Thêm Khách Hàng Mới</h2>
-                    <form action="{{ url_for('customer_bp.add_customer') }}" method="POST">
-                        <div class="form-group">
-                            <label for="customer_id" class="form-label">Mã Khách Hàng</label>
-                            <input type="text" class="form-control" id="customer_id" name="customer_id" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Tên Khách Hàng:</label>
-                            <input type="text" name="name" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="gender" class="form-label">Giới Tính</label>
-                            <select class="form-select" id="gender" name="gender" required>
-                                <option value="" disabled selected>Chọn giới tính</option>
-                                <option value="male">Nam</option>
-                                <option value="female">Nữ</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="age">Tuổi:</label>
-                            <input type="number" name="age" id="age" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="street">Số đường/nhà:</label>
-                            <input id="street" name="street" required class="form-control"></input>
-                        </div>
-                        <div class="form-group">
-                            <label for="city">Thành phố:</label>
-                            <input id="city" name="city" required class="form-control"></input>
-                        </div>
-                        <div class="form-group">
-                            <label for="postal_code">Mã Bưu Điện:</label>
-                            <input id="postal_code" name="postal_code" required class="form-control"></input>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Số Điện Thoại:</label>
-                            <input type="text" name="phone" id="phone" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" name="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="role">Role:</label>
-                            <select class="form-select" name="role" id="role" required>
-                                <option value="Normal" {% if customer and customer['role'] == 'Normal' %}selected{% endif %}>Normal</option>
-                                <option value="VIP" {% if customer and customer['role'] == 'VIP' %}selected{% endif %}>VIP</option>
-                                <option value="Admin" {% if customer and customer['role'] == 'Admin' %}selected{% endif %}>Admin</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn-add">Thêm</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="addCustomer" tabindex="-1" aria-labelledby="addCustomerLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cập nhật khách hàng</h1>
+                            <h1 class="modal-title fs-5" id="addCustomerLabel">Thêm khách hàng</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="customerAddForm" action="{{ url_for('customer_bp.add_customer') }}" method="POST">
+                                <div class="form-group">
+                                    <label for="customer_id" class="form-label">Mã Khách Hàng</label>
+                                    <input type="text" class="form-control" id="customer_id" name="customer_id" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Tên Khách Hàng:</label>
+                                    <input type="text" class="form-control" name="name" id="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender" class="form-label">Giới Tính</label>
+                                    <select class="form-select" id="gender" name="gender" required>
+                                        <option value="" disabled selected>Chọn giới tính</option>
+                                        <option value="male">Nam</option>
+                                        <option value="female">Nữ</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="age">Tuổi:</label>
+                                    <input type="number" class="form-control" name="age" id="age" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="street">Số đường/nhà:</label>
+                                    <input id="street" name="street" required class="form-control"></input>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">Thành phố:</label>
+                                    <input id="city" name="city" required class="form-control"></input>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postal_code">Mã Bưu Điện:</label>
+                                    <input id="postal_code" name="postal_code" required class="form-control"></input>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Số Điện Thoại:</label>
+                                    <input type="text" class="form-control" name="phone" id="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" name="email" id="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="role">Role:</label>
+                                    <select class="form-select" name="role" id="role" required>
+                                        <option value="Normal">Normal</option>
+                                        <option value="VIP">VIP</option>
+                                        <option value="Admin">Admin</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                            <button type="submit" class="btn btn-primary" form="customerAddForm">Thêm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal fade" id="editCustomer" tabindex="-1" aria-labelledby="editCustomerLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="editCustomerLabel">Cập nhật khách hàng</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -172,6 +200,54 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
                             <button type="submit" class="btn btn-primary" form="customerUpdateForm">Lưu thay đổi</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Import từ CSV -->
+            <div class="modal fade" id="importCSVModal" tabindex="-1" aria-labelledby="importCSVLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="importCSVLabel">Import Dữ Liệu từ CSV</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url_for('customer_bp.import_csv') }}" method="POST" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="csvFile" class="form-label">Chọn file CSV:</label>
+                                    <input type="file" class="form-control" id="csvFile" name="csvFile" accept=".csv" required>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                                    <button type="submit" class="btn btn-primary">Import CSV</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Import từ JSON -->
+            <div class="modal fade" id="importJSONModal" tabindex="-1" aria-labelledby="importJSONLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="importJSONLabel">Import Dữ Liệu từ JSON</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url_for('customer_bp.import_json') }}" method="POST" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="jsonFile" class="form-label">Chọn file JSON:</label>
+                                    <input type="file" class="form-control" id="jsonFile" name="jsonFile" accept=".json" required>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                                    <button type="submit" class="btn btn-primary">Import JSON</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

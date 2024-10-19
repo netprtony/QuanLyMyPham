@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+import csv, json
 from pymongo import MongoClient
 client = MongoClient('mongodb://localhost:27017/')
 db = client['QL_CosmeticsStore']
@@ -81,5 +82,82 @@ def update_customer():
             'role': role
         }}
     )
+    return redirect(url_for('customer_bp.customer_list'))
+#Tìm kiếm khách hàng theo mã
+@customer_bp.route('/search_customer', methods=['GET'])
+def search_customer():
+    customer_id = request.args.get('customer_id')
 
+    # Tìm khách hàng theo customer_id trong MongoDB
+    customer = customers_collection.find_one({'customer_id': customer_id})
+
+    if customer:
+        # Nếu tìm thấy khách hàng, trả về trang kết quả
+        return render_template('customer_list.html', customers=[customer])
+    else:
+        # Nếu không tìm thấy, có thể trả về một thông báo lỗi hoặc trang trắng
+        return render_template('customer_list.html', customers=[], message="Không tìm thấy khách hàng")
+    
+@customer_bp.route('/import-csv', methods=['POST'])
+def import_csv():
+    if 'file' not in request.files:
+        flash('Không có tệp nào được chọn')
+        return redirect(request.url)
+
+    file = request.files['file']
+    
+    if file.filename == '':
+        flash('Không có tệp nào được chọn')
+        return redirect(request.url)
+
+    if file:
+        try:
+            # Mở tệp CSV trong chế độ văn bản
+            with open(file.stream, mode='r', newline='', encoding='utf-8') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    # Xử lý từng hàng trong tệp CSV
+                    customer_data = {
+                        "customer_id": row['customer_id'],
+                        "name": row['name'],
+                        "email": row['email'],
+                        "phone": row['phone'],
+                        "gender": row['gender'],
+                        "age": int(row['age']),
+                        "address": {
+                            "street": row['street'],
+                            "city": row['city'],
+                            "postal_code": row['postal_code']
+                        },
+                        "preferred_delivery_location": "LOC001",
+                        "role": row['role']
+                    }
+                    customers_collection.insert_one(customer_data)
+            flash('Dữ liệu đã được nhập thành công!')
+        except Exception as e:
+            flash(f'Lỗi khi nhập dữ liệu: {str(e)}')
+            return redirect(request.url)
+        
+    return redirect(url_for('customer_bp.customer_list'))
+
+
+@customer_bp.route('/import-json', methods=['POST'])
+def import_json():
+    if 'jsonFile' not in request.files:
+        flash('Không tìm thấy file JSON', 'error')
+        return redirect(url_for('customer_bp.customer_list'))
+
+    file = request.files['jsonFile']
+
+    if file.filename == '':
+        flash('File không hợp lệ', 'error')
+        return redirect(url_for('customer_bp.customer_list'))
+
+    # Xử lý file JSON
+    json_data = json.load(file.stream)
+    
+    for customer in json_data:
+        customers_collection.insert_one(customer)
+
+    flash('Dữ liệu JSON đã được import thành công', 'success')
     return redirect(url_for('customer_bp.customer_list'))

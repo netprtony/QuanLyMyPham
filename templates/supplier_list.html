@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+{% block title %}
+    Nhà Cung Cấp
+{% endblock %}
+{% block content %}
+    <div class="management">
+        <div class="header">
+            <h2>Danh Mục Nhà Cung Cấp</h2>
+        </div>
+        
+        <button type="button" class="btn btn-primary action" data-bs-toggle="modal" data-bs-target="#addSupplierModal">
+            Thêm Nhà Cung Cấp
+        </button>
+        <div class="list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã nhà cung cấp</th>
+                        <th>Tên</th>
+                        <th>SĐT</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for index, supplier in enumerate(suppliers) %}
+                        <tr>
+                            <td>{{ index + 1 }}</td> 
+                            <td>{{ supplier.supplier_id }}</td>
+                            <td>{{ supplier.name }}</td>
+                            <td>{{ supplier.contact_info.phone }}</td>
+                            <td>{{ supplier.contact_info.email }}</td>
+                            <td>{{ supplier.contact_info.address }}</td>
+                            
+                            <td>
+                                <a href="#" class="btn btn-warning">Sửa</a>
+                                <form action="" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa sẩn phẩm này không?');">Xóa</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="modal fade" id="addSupplierModal" tabindex="-1" aria-labelledby="addSupplierLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="addSupplierLabel">Thêm Nhà Cung Cấp</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="supplierAddForm" action="" method="POST">
+                                <div class="form-group">
+                                    <label for="supplier_id" class="form-label">Mã Nhà Cung Cấp</label>
+                                    <input type="text" class="form-control" id="supplier_id" name="supplier_id" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Tên Nhà Cung Cấp:</label>
+                                    <input type="text" class="form-control" name="name" id="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Số Điện Thoại:</label>
+                                    <input type="text" class="form-control" name="phone" id="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" name="email" id="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Địa Chỉ:</label>
+                                    <input type="text" class="form-control" name="address" id="address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="products_supplied">Sản Phẩm Cung Cấp (ngăn cách bởi dấu phẩy):</label>
+                                    <input type="text" class="form-control" name="products_supplied" id="products_supplied" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                            <button type="submit" class="btn btn-primary" form="supplierAddForm">Lưu Nhà Cung Cấp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}
