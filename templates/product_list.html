@@ -27,7 +27,7 @@
                 <tbody>
                     {% for index, product in enumerate(products) %}
                         <tr>
-                            <td>{{ index + 1 }}</td> 
+                            <td>{{ loop.index }}</td> 
                             <td>{{ product.product_id }}</td>
                             <td>{{ product.name }}</td>
                             <td>{{ product.brand }}</td>

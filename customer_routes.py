@@ -82,7 +82,6 @@ def update_customer():
             'role': role
         }}
     )
-
     return redirect(url_for('customer_bp.customer_list'))
 #Tìm kiếm khách hàng theo mã
 @customer_bp.route('/search_customer', methods=['GET'])

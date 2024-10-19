@@ -54,7 +54,7 @@
                             <td>{{ customer['email'] }}</td>
                             <td>{{ customer['role'] }}</td>
                             <td class="row">
-                                <button type="button" class="btn btn-warning col-5" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editCustomer('{{ customer['customer_id'] }}', '{{ customer['name'] }}', '{{ customer['gender'] }}', '{{ customer['age'] }}', '{{ customer.address.street }}', '{{ customer.address.city }}', '{{ customer.address.postal_code }}', '{{ customer['phone'] }}', '{{ customer['email'] }}', '{{ customer['role'] }}')">
+                                <button type="button" class="btn btn-warning col-5" data-bs-toggle="modal" data-bs-target="#editCustomer" onclick="editCustomer('{{ customer['customer_id'] }}', '{{ customer['name'] }}', '{{ customer['gender'] }}', '{{ customer['age'] }}', '{{ customer.address.street }}', '{{ customer.address.city }}', '{{ customer.address.postal_code }}', '{{ customer['phone'] }}', '{{ customer['email'] }}', '{{ customer['role'] }}')">
                                     Sửa
                                 </button>
                                 <form class="col-5" action="{{ url_for('customer_bp.delete_customer', customer_id=customer['customer_id']) }}" method="POST" style="display:inline;">
@@ -130,11 +130,11 @@
                 </div>
             </div>
             
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="editCustomer" tabindex="-1" aria-labelledby="editCustomerLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cập nhật khách hàng</h1>
+                            <h1 class="modal-title fs-5" id="editCustomerLabel">Cập nhật khách hàng</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">

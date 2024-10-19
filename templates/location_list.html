@@ -8,27 +8,43 @@ Quản Lý Địa Điểm Khách Hàng
             <h2>Quản Lý Địa Điểm Khách Hàng</h2>
         </div>
         <div class="actions">
-            <a href="/add-location" class="btn btn-primary">Thêm Địa Điểm</a>
+            <a href="/add-location" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addLocation">Thêm Địa Điểm</a>
         </div>
         <div class="list">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Tên địa điểm</th>
+                        <th>STT</th>
+                        <th>Mã</th>
+                        <th>Thành phố</th>
                         <th>Địa chỉ</th>
-                        <th>Ghi chú</th>
+                        <th>Mã bưu điện</th>
+                        <th>Liên hệ</th>
+                        <th>Quốc gia</th>
+                        <th>Loại</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for location in locations %}
                         <tr>
+                            <td>{{ loop.index }}</td> 
+                            <td>{{ location.location_id }}</td>
                             <td>{{ location.city }}</td>  <!-- Hiển thị city -->
                             <td>{{ location.address }}</td>
+                            <td>{{ location.postal_code }}</td>
+                            <td>{{ location.contact_number }}</td>
+                            <td>{{ location.country }}</td>
                             <td>{{ location.type }}</td>  <!-- Hiển thị type -->
                             <td>
-                                <a href="/edit-location/{{ location._id }}" class="btn btn-warning">Sửa</a>
-                                <button class="btn btn-danger" onclick="deleteLocation('{{ location._id }}');">Xóa</button>
+                                <div class="row">
+                                    <button type="button" class="btn btn-warning col-5" data-bs-toggle="modal" data-bs-target="#editLocation" onclick="">
+                                        Sửa
+                                    </button>
+                                    <form class="col-5" action="" method="POST" style="display:inline;">
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa địa điểm này không?');">Xóa</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     {% endfor %}
@@ -36,19 +52,52 @@ Quản Lý Địa Điểm Khách Hàng
             </table>
         </div>
     </div>
-    <script>
-        function deleteLocation(locationId) {
-            if (confirm('Bạn có chắc chắn muốn xóa địa điểm này?')) {
-                // Gửi request xóa dữ liệu đến server
-                $.ajax({
-                    url: '/delete_location/' + locationId,
-                    method: 'POST',
-                    success: function(response){
-                        // Cập nhật bảng danh sách
-                        location.reload();
-                    }
-                });
-            }
-        }
-    </script>
+    
+    <div class="modal fade" id="addLocation" tabindex="-1" aria-labelledby="addlocationLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addlocationLabel">Thêm Địa Điểm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="locationAddForm" action="{{ url_for('location_bp.add_location') }}" method="POST">
+                        <div class="form-group">
+                            <label for="location_id" class="form-label">Mã Địa Điểm</label>
+                            <input type="text" class="form-control" id="location_id" name="location_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Thành phố:</label>
+                            <input type="text" class="form-control" name="city" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postal_code">Mã bưu điện:</label>
+                            <input type="text" class="form-control" name="postal_code" id="postal_code" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <input type="address" class="form-control" name="address" id="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Quốc gia:</label>
+                            <input type="text" class="form-control" name="country" id="country" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_number">Liên hệ:</label>
+                            <input type="text" class="form-control" name="contact_number" id="contact_number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Loại:</label>
+                            <input type="text" class="form-control" name="type" id="type" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                    <button type="submit" class="btn btn-primary" form="locationAddForm">Thêm Địa Điểm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
