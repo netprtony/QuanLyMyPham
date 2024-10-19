@@ -56,16 +56,16 @@ def delete_customer(customer_id):
 #Sửa
 @customer_bp.route('/update_customer', methods=['POST'])
 def update_customer():
-    customer_id = request.form['customer_id']
-    name = request.form['name']
-    gender = request.form['gender']
-    age = request.form['age']
-    street = request.form['street']
-    city = request.form['city']
-    postal_code = request.form['postal_code']
-    phone = request.form['phone']
-    email = request.form['email']
-    role = request.form['role']
+    customer_id = request.form['customer_id_edit']
+    name = request.form['name_edit']
+    gender = request.form['gender_edit']
+    age = request.form['age_edit']
+    street = request.form['street_edit']
+    city = request.form['city_edit']
+    postal_code = request.form['postal_code_edit']
+    phone = request.form['phone_edit']
+    email = request.form['email_edit']
+    role = request.form['role_edit']
 
     # Cập nhật khách hàng trong MongoDB
     customers_collection.update_one(
@@ -83,4 +83,4 @@ def update_customer():
         }}
     )
 
-    return redirect(url_for('customer_list'))
+    return redirect(url_for('customer_bp.customer_list'))
