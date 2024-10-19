@@ -32,4 +32,13 @@ def add_location():
         location_collection.insert_one(location_data)
         return redirect(url_for('location_bp.location_list'))
     
-    
+#Xóa-------------------------------------------------------
+@location_bp.route('/delete_location/<location_id>', methods=['POST'])
+def delete_location(location_id):
+    # Xóa khách hàng từ MongoDB
+    result = location_collection.delete_one({'location_id': location_id})
+
+    if result.deleted_count > 0:
+        return redirect(url_for('location_bp.location_list'))  # Chuyển hướng về danh sách khách hàng
+    else:
+        return "Không tìm thấy khách hàng với ID này", 404

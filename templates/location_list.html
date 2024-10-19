@@ -41,7 +41,7 @@ Quản Lý Địa Điểm Khách Hàng
                                     <button type="button" class="btn btn-warning col-5" data-bs-toggle="modal" data-bs-target="#editLocation" onclick="">
                                         Sửa
                                     </button>
-                                    <form class="col-5" action="" method="POST" style="display:inline;">
+                                    <form class="col-5" action="{{ url_for('location_bp.delete_location', location_id=location['location_id']) }}" method="POST" style="display:inline;">
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa địa điểm này không?');">Xóa</button>
                                     </form>
                                 </div>
