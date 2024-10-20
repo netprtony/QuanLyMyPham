@@ -1,9 +1,11 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from pymongo import MongoClient
+from collections import defaultdict
 client = MongoClient('mongodb://localhost:27017/')
 db = client['QL_CosmeticsStore']
 products_collection = db['Products']
 supplier_collection = db['Suppliers']
+orders_collection = db['Orders']
 # Tạo một Blueprint cho các route của đơn hàng
 product_bp = Blueprint('product_bp', __name__)
 @product_bp.route('/product-list')
@@ -92,3 +94,46 @@ def list_products_by_category():
     products_list = list(products)
 
     return render_template('product_list.html', products=products_list)
+
+@product_bp.route('/product-list')
+def product_list():
+    filter_type = request.args.get('filter')
+
+    if filter_type == 'most_selling':
+        # Lọc sản phẩm bán nhiều nhất
+        products = list(orders_collection.aggregate([
+            {"$unwind": "$products_ordered"},
+            {"$group": {
+                "_id": "$products_ordered.product_name",
+                "total_quantity_sold": {"$sum": "$products_ordered.quantity"}
+            }},
+            {"$sort": {"total_quantity_sold": -1}},
+            {"$limit": 1}
+        ]))
+    elif filter_type == 'least_selling':
+        # Lọc sản phẩm bán ít nhất
+        products = list(orders_collection.aggregate([
+            {"$unwind": "$products_ordered"},
+            {"$group": {
+                "_id": "$products_ordered.product_name",
+                "total_quantity_sold": {"$sum": "$products_ordered.quantity"}
+            }},
+            {"$sort": {"total_quantity_sold": 1}},
+            {"$limit": 1}
+        ]))
+    elif filter_type == 'unsold':
+        # Lọc sản phẩm chưa được mua
+        sold_products = orders_collection.aggregate([
+            {"$unwind": "$products_ordered"},
+            {"$group": {
+                "_id": "$products_ordered.product_name"
+            }}
+        ])
+        products = list(products_collection.find({
+            "name": {"$nin": [product["_id"] for product in sold_products]}
+        }))
+    else:
+        # Hiển thị tất cả sản phẩm
+        products = list(products_collection.find())
+
+    return render_template('product_list.html', products=products)
