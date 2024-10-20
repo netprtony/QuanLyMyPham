@@ -405,7 +405,7 @@ body {
     min-height: 150vh;
     display: flex;
     flex-direction: column;
-    background-image: url('/static/images/gaidep.jfif'); /* Đường dẫn đến ảnh nền */
+    background-image: url('/static/images/background.jpg'); /* Đường dẫn đến ảnh nền */
     background-size:auto; /* Ảnh sẽ bao phủ toàn bộ nền */
     background-position: center;
     background-attachment: fixed;
