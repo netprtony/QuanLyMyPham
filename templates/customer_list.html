@@ -13,20 +13,6 @@
                 <input class="form-control" type="search" name="customer_id"  placeholder="Tìm kiếm Mã Khách Hàng" aria-label="Search" required>
                 <button class="btn btn-outline-success ms-2" type="submit">Tìm kiếm</button>
             </form>
-            <div class="btn-group col-2">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Import Dữ Liệu
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#importCSVModal">Import từ CSV</a></li>
-                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#importJSONModal">Import từ JSON</a></li>
-                </ul>
-            </div>
-            <div class="d-flex justify-content-end mb-5 col-2">
-                <a href="{{ url_for('customer_bp.export_csv') }}" class="btn btn-success">
-                    Export CSV
-                </a>
-            </div>
         </div>
         <div class="customer-list">
             <table class="table">
@@ -53,7 +39,7 @@
                             <td>{{ customer['name'] }}</td>
                             <td>{{ customer['gender'] }}</td>
                             <td>{{ customer['age'] }}</td>
-                            <td>{{ customer.address.street }}, {{ customer['address']['city'] }}, {{ customer.address.postal_code }}</td>
+                            <td>{{ customer.address.street }}, {{ customer.address.city }}, {{ customer.address.postal_code }}</td>
                             <td>{{ customer['phone'] }}</td>
                             <td>{{ customer['email'] }}</td>
                             <td>{{ customer['role'] }}</td>
