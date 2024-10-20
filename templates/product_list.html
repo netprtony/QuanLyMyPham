@@ -45,72 +45,7 @@
                 </tbody>
             </table>
         </div>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm sản phẩm</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="customerUpdateForm" action="{{ url_for('customer_bp.update_customer') }}" method="POST">
-                            <div class="form-group">
-                                <label for="customer_id_edit" class="form-label">Mã Khách Hàng</label>
-                                <input type="text" class="form-control" id="customer_id_edit" name="customer_id_edit" required readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="name_edit">Tên Khách Hàng:</label>
-                                <input type="text" class="form-control" name="name_edit" id="name_edit" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="gender_edit" class="form-label">Giới Tính</label>
-                                <select class="form-select" id="gender_edit" name="gender_edit" required>
-                                    <option value="" disabled selected>Chọn giới tính</option>
-                                    <option value="male">Nam</option>
-                                    <option value="female">Nữ</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="age_edit">Tuổi:</label>
-                                <input type="number" class="form-control" name="age_edit" id="age_edit" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="street_edit">Số đường/nhà:</label>
-                                <input id="street_edit" name="street_edit" required class="form-control"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="city_edit">Thành phố:</label>
-                                <input id="city_edit" name="city_edit" required class="form-control"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="postal_code_edit">Mã Bưu Điện:</label>
-                                <input id="postal_code_edit" name="postal_code_edit" required class="form-control"></input>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone_edit">Số Điện Thoại:</label>
-                                <input type="text" class="form-control" name="phone_edit" id="phone_edit" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email_edit">Email:</label>
-                                <input type="email" class="form-control" name="email_edit" id="email_edit" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="role_edit">Role:</label>
-                                <select class="form-select" name="role_edit" id="role_edit" required>
-                                    <option value="Normal">Normal</option>
-                                    <option value="VIP">VIP</option>
-                                    <option value="Admin">Admin</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
-                        <button type="submit" class="btn btn-primary" form="customerUpdateForm">Lưu thay đổi</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+
+    
 {% endblock %}

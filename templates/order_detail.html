@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}
+    Chi tiết Đơn Hàng
+{% endblock %}
+{% block content %}
+<div class="order-detail">
+    <h2>Chi Tiết Đơn Hàng - {{ order['order_id'] }}</h2>
+    
+    <h3>Thông Tin Khách Hàng</h3>
+    <p><strong>Tên:</strong> {{ customer['name'] }}</p>
+    <p><strong>Email:</strong> {{ customer['email'] }}</p>
+    <p><strong>Số Điện Thoại:</strong> {{ customer['phone'] }}</p>
+    <p><strong>Địa Chỉ:</strong> {{ customer['address']['street'] }}, {{ customer['address']['city'] }}, {{ customer['address']['postal_code'] }}</p>
+    
+    <h3>Chi Tiết Sản Phẩm</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên Sản Phẩm</th>
+                <th>Danh Mục</th>
+                <th>Số Lượng</th>
+                <th>Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in order['products_ordered'] %}
+            <tr>
+                <td>{{ product['product_name'] }}</td>
+                <td>{{ product['category'] }}</td>
+                <td>{{ product['quantity'] }}</td>
+                <td>{{ product['price'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Tổng Giá: {{ order['total_price'] }}</h3>
+    <p><strong>Ngày Đặt:</strong> {{ order['order_date'] }}</p>
+    <p><strong>Trạng Thái:</strong> {{ order['status'] }}</p>
+    
+    <div class="actions">
+        <a href="/order-list" class="btn btn-secondary">Trở lại Danh Sách Đơn Hàng</a>
+    </div>
+</div>
+{% endblock %}

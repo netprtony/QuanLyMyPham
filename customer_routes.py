@@ -23,8 +23,10 @@ def add_customer():
     if request.method == 'POST':
         # Lấy giá trị từ form với request.form.get() để tránh KeyError
         customer_id = request.form.get('customer_id')
-        if not customer_id:
+        if not customer_id :
             return "Customer ID không được để trống", 400  # Thêm xử lý lỗi nếu cần
+        if customers_collection.find_one({"customer_id": customer_id}) :
+            return "Customer ID không được trùng", 400  # Thêm xử lý lỗi nếu cần
         # Lấy dữ liệu từ form
         customer_data = {
             "customer_id": customer_id,
