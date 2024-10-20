@@ -8,7 +8,7 @@
             <h2>Danh Mục Mỹ Phẩm</h2>
         </div>
         <div class="actions">
-            <a href="/add-product" class="btn btn-primary">Thêm Sản Phẩm</a>
+            <button class="btn-add col-2 p-0" data-bs-toggle="modal" data-bs-target="#addProductModal">Thêm Sản Phẩm</button>
         </div>
         <div class="list">
             <table class="table">
@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for index, product in enumerate(products) %}
+                    {% for product in products %}
                         <tr>
                             <td>{{ loop.index }}</td> 
                             <td>{{ product.product_id }}</td>
@@ -46,6 +46,63 @@
             </table>
         </div>
     </div>
-
+    
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addProductLabel">Thêm Sản Phẩm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="productAddForm" action="/add-product" method="POST">
+                        <div class="form-group">
+                            <label for="product_id" class="form-label">Mã Sản Phẩm</label>
+                            <input type="text" class="form-control" id="product_id" name="product_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Tên Sản Phẩm:</label>
+                            <input type="text" class="form-control" name="name" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Danh Mục:</label>
+                            <input type="text" class="form-control" name="category" id="category" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brand">Thương Hiệu:</label>
+                            <input type="text" class="form-control" name="brand" id="brand" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Giá:</label>
+                            <input type="number" class="form-control" name="price" id="price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="stock">Số Lượng Tồn Kho:</label>
+                            <input type="number" class="form-control" name="stock" id="stock" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="supplier_id">Mã Nhà Cung Cấp:</label>
+                            <select id="supplier_id" name="supplier_id" required>
+                                {% for supplier in suppliers %}
+                                <option value="{{ supplier['supplier_id'] }}">
+                                    {{ supplier['supplier_id'] }} - {{ supplier['name'] }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Mô Tả Sản Phẩm:</label>
+                            <textarea class="form-control" name="description" id="description" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                    <button type="submit" class="btn btn-primary" form="productAddForm">ThêmSản Phẩm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     
 {% endblock %}

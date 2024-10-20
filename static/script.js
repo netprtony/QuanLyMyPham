@@ -25,7 +25,6 @@ function editLocation(location_id, city, postal_code, address, country, contact_
     document.getElementById('country_edit').value = country;
     document.getElementById('contact_number_edit').value = contact_number;
     document.getElementById('type_edit').value = type;
-    
 }
 function deleteCustomer() {
     return confirmDeleteCustomer = confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');
