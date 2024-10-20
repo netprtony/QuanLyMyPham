@@ -3,11 +3,13 @@ from pymongo import MongoClient
 client = MongoClient('mongodb://localhost:27017/')
 db = client['QL_CosmeticsStore']
 suppliers_collection = db['Suppliers']
+product_collection = db['Products']
 supplier_bp = Blueprint('supplier_bp', __name__)
 
 @supplier_bp.route('/supplier-list')
 def supplier_list():
     suppliers = suppliers_collection.find()
+    products = product_collection.find()
     return render_template('supplier_list.html', suppliers=suppliers, enumerate=enumerate)
 
 @supplier_bp.route('/add-supplier', methods=['POST'])
@@ -26,10 +28,20 @@ def add_supplier():
                 "phone": request.form['phone'],
                 "email": request.form['email'],
                 "address": request.form['address']
-            },
-            "products_supplied": request.form.get('products_supplied').split(',')  # Chuyển đổi chuỗi thành mảng
+            }
         }
 
         # Thêm nhà cung cấp vào MongoDB
         suppliers_collection.insert_one(supplier_data)
         return redirect(url_for('supplier_bp.supplier_list'))
+    
+#Xóa--------------------------------------------------------------
+@supplier_bp.route('/delete_supplier/<supplier_id>', methods=['POST'])
+def delete_supplier(supplier_id):
+    # Xóa khách hàng từ MongoDB
+    result_supplier = suppliers_collection.delete_one({'supplier_id': supplier_id})
+    # Xóa tất cả đơn hàng của khách hàng
+    if result_supplier.deleted_count > 0 :
+        return redirect(url_for('supplier_bp.supplier_list'))  # Chuyển hướng về danh sách khách hàng
+    else:
+        return "Không tìm thấy khách hàng với ID này", 404

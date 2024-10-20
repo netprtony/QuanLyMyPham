@@ -35,9 +35,11 @@
                             <td>{{ supplier.contact_info.address }}</td>
                             
                             <td>
-                                <a href="#" class="btn btn-warning">Sửa</a>
-                                <form action="" method="POST" style="display:inline;">
-                                    <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa sẩn phẩm này không?');">Xóa</button>
+                                <button type="button" class="btn-edit col" data-bs-toggle="modal" data-bs-target="#editSupplierModal" onclick="">
+                                    Sửa
+                                </button>
+                                <form action="{{ url_for('supplier_bp.delete_supplier', supplier_id=supplier['supplier_id']) }}" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn-delete col" onclick="return confirm('Bạn có chắc chắn muốn xóa nhà cung cấp này không?');">Xóa</button>
                                 </form>
                             </td>
                         </tr>
@@ -53,7 +55,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="supplierAddForm" action="" method="POST">
+                            <form id="supplierAddForm" action="/add-supplier" method="POST">
                                 <div class="form-group">
                                     <label for="supplier_id" class="form-label">Mã Nhà Cung Cấp</label>
                                     <input type="text" class="form-control" id="supplier_id" name="supplier_id" required>
@@ -74,20 +76,55 @@
                                     <label for="address">Địa Chỉ:</label>
                                     <input type="text" class="form-control" name="address" id="address" required>
                                 </div>
-                                <div class="form-group">
-                                    <label for="products_supplied">Sản Phẩm Cung Cấp (ngăn cách bởi dấu phẩy):</label>
-                                    <input type="text" class="form-control" name="products_supplied" id="products_supplied" required>
-                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
-                            <button type="submit" class="btn btn-primary" form="supplierAddForm">Lưu Nhà Cung Cấp</button>
+                            <button type="submit" class="btn btn-primary" form="supplierAddForm">THêm Nhà Cung Cấp</button>
                         </div>
                     </div>
                 </div>
             </div>
             
+            <div class="modal fade" id="editSupplierModal" tabindex="-1" aria-labelledby="editSupplierLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="editSupplierLabel">Thêm Nhà Cung Cấp</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="supplierAddForm" action="" method="POST">
+                                <div class="form-group">
+                                    <label for="supplier_id_edit" class="form-label">Mã Nhà Cung Cấp</label>
+                                    <input type="text" class="form-control" id="supplier_id_edit" name="supplier_id_edit" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name_edit">Tên Nhà Cung Cấp:</label>
+                                    <input type="text" class="form-control" name="name_edit" id="name_edit" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone_edit">Số Điện Thoại:</label>
+                                    <input type="text" class="form-control" name="phone_edit" id="phone_edit" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email_edit">Email:</label>
+                                    <input type="email" class="form-control" name="email_edit" id="email_edit" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address_edit">Địa Chỉ:</label>
+                                    <input type="text" class="form-control" name="address_edit" id="address_edit" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                            <button type="submit" class="btn btn-primary" form="supplierEditForm">Lưu Nhà Cung Cấp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 {% endblock %}

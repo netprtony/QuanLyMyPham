@@ -39,3 +39,11 @@ function editProduct(product_id, name, category, brand, price, stock, supplier_i
     document.getElementById('supplier_id_edit').value = supplier_id;
     document.getElementById('description_edit').value = description;
 }
+function editSupplier(supplier_id, name, phone, email, address) {
+    document.getElementById('supplier_id_edit').value = supplier_id;
+    document.getElementById('name_edit').value = name;
+    document.getElementById('phone_edit').value = phone;
+    document.getElementById('email_edit').value = email;
+    document.getElementById('address_edit').value = address;
+
+}
