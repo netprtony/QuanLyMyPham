@@ -73,3 +73,22 @@ def delete_product(product_id):
         return redirect(url_for('product_bp.product_list'))  # Chuyển hướng về danh sách mỹ phẩm
     else:
         return "Không tìm thấy sản phẩm với ID này", 404
+    
+
+@product_bp.route('/products', methods=['GET'])
+def list_products_by_category():
+    # Lấy chủng loại từ query parameter
+    category = request.args.get('category')
+
+    # Kiểm tra nếu có chủng loại được cung cấp
+    if category:
+        # Lọc sản phẩm theo chủng loại
+        products = products_collection.find({"category": category})
+    else:
+        # Nếu không có chủng loại được cung cấp, trả về tất cả sản phẩm
+        products = products_collection.find()
+
+    # Chuyển đổi kết quả thành danh sách
+    products_list = list(products)
+
+    return render_template('product_list.html', products=products_list)

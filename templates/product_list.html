@@ -9,6 +9,21 @@
         </div>
         <div class="actions">
             <button class="btn-add col-2 p-0" data-bs-toggle="modal" data-bs-target="#addProductModal">Thêm Sản Phẩm</button>
+            <form method="GET" action="/products">
+                <div class="form-group">
+                    <label for="category">Chọn Chủng Loại:</label>
+                    <select name="category" id="category" class="form-control">
+                        <option value="">Tất Cả</option>
+                        <option value="Skincare">Skincare</option>
+                        <option value="Cosmetics">Cosmetics</option>
+                        <option value="Haircare">Haircare</option>
+                        <option value="Detoxss">Detoxss</option>
+                        <option value="Exfoliating Products">Exfoliating Products</option>
+                        <option value="Anti-aging Products">Anti-aging Products</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Lọc</button>
+            </form>
         </div>
         <div class="list">
             <table class="table">
