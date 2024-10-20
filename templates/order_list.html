@@ -7,7 +7,18 @@
     <div class="header">
         <h2> Danh Sách Đơn Hàng</h2>
     </div>
-
+    <form method="GET" action="/orders">
+        <div class="form-group">
+            <label for="status">Trạng Thái Đơn Hàng:</label>
+            <select name="status" id="status" class="form-control">
+                <option value="">Tất Cả</option>
+                <option value="Pending">Pending</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Lọc</button>
+    </form>
     <div class="list">
         <table class="table">
             <thead>
@@ -21,9 +32,9 @@
                 </tr>
             </thead>
             <tbody>
-                {% for index, order in enumerate(orders) %}
+                {% for order in orders %}
                 <tr>
-                    <td>{{ index + 1 }}</td> 
+                    <td>{{ loop.index }}</td> 
                     <td class="textbox-id" onclick="window.location.href='/order-detail/{{ order['order_id'] }}'">
                         {{ order['order_id'] }}
                     </td>
