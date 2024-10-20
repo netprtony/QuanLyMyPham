@@ -20,7 +20,9 @@
                         <th>Thương hiệu</th>
                         <th>Loại</th>
                         <th>Giá</th>
-                        <th>Số lượng</th>
+                        <th>Tồn Kho</th>
+                        <th>Nhà cung cấp</th>
+                        <th>Mô tả</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
@@ -34,10 +36,14 @@
                             <td>{{ product.category }}</td>
                             <td>{{ product.price }}</td>
                             <td>{{ product.stock }}</td>
+                            <td>{{ product.supplier_id }}</td>
+                            <td>{{ product.description }}</td>
                             <td>
-                                <a href="/edit_product.html/{{ product._id }}" class="btn btn-warning">Sửa</a>
+                                <button type="button" class="btn-edit col" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="editProduct('{{ product['product_id'] }}', '{{ product['name'] }}', '{{ product['category'] }}', '{{ product['brand'] }}', '{{ product[price] }}', '{{ product[stock] }}', '{{ product[supplier_id] }}', '{{ product['description'] }}')">
+                                    Sửa
+                                </button>
                                 <form action="{{ url_for('product_bp.delete_product', product_id=product['product_id']) }}" method="POST" style="display:inline;">
-                                    <button type="submit" class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa sẩn phẩm này không?');">Xóa</button>
+                                    <button type="submit" class="btn-delete col" onclick="return confirm('Bạn có chắc chắn muốn xóa sẩn phẩm này không?');">Xóa</button>
                                 </form>
                             </td>
                         </tr>
@@ -81,7 +87,7 @@
                             <input type="number" class="form-control" name="stock" id="stock" required>
                         </div>
                         <div class="form-group">
-                            <label for="supplier_id">Mã Nhà Cung Cấp:</label>
+                            <label for="supplier_id">Nhà Cung Cấp:</label>
                             <select id="supplier_id" name="supplier_id" required>
                                 {% for supplier in suppliers %}
                                 <option value="{{ supplier['supplier_id'] }}">
@@ -98,11 +104,61 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
-                    <button type="submit" class="btn btn-primary" form="productAddForm">ThêmSản Phẩm</button>
+                    <button type="submit" class="btn btn-primary" form="productAddForm">Thêm Sản Phẩm</button>
                 </div>
             </div>
         </div>
     </div>
     
+    <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editProductLabel">Sửa Sản Phẩm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="productEditForm" action="/update-product" method="POST">
+                        <div class="form-group">
+                            <label for="product_id_edit" class="form-label">Mã Sản Phẩm</label>
+                            <input type="text" class="form-control" id="product_id_edit" name="product_id_edit" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="name_edit">Tên Sản Phẩm:</label>
+                            <input type="text" class="form-control" name="name_edit" id="name_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category_edit">Danh Mục:</label>
+                            <input type="text" class="form-control" name="category_edit" id="category_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brand_edit">Thương Hiệu:</label>
+                            <input type="text" class="form-control" name="brand_edit" id="brand_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price_edit">Giá:</label>
+                            <input type="number" class="form-control" name="price_edit" id="price_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="stock_edit">Số Lượng Tồn Kho:</label>
+                            <input type="number" class="form-control" name="stock_edit" id="stock_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="supplier_id_edit">Nhà Cung Cấp:</label>
+                            <input type="text" class="form-control" name="supplier_id_edit" id="supplier_id_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description_edit">Mô Tả Sản Phẩm:</label>
+                            <textarea class="form-control" name="description_edit" id="description_edit" required></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                    <button type="submit" class="btn btn-primary" form="productEditForm">Lưu Thay Đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
 {% endblock %}

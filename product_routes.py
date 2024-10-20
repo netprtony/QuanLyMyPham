@@ -37,20 +37,32 @@ def add_product():
         return redirect(url_for('product_bp.product_list'))
 
 
-@product_bp.route('/edit-product/<int:product_id>', methods=['GET', 'POST'])
-def edit_product(product_id):
-    # Lấy dữ liệu sản phẩm từ MongoDB
-    product = products_collection.find_one({'_id': product_id})
-    if request.method == 'POST':
-        product['name'] = request.form['name']
-        product['brand'] = request.form['brand']
-        product['product_type'] = request.form['product_type']
-        product['price'] = request.form['price']
-        product['quantity'] = request.form['quantity']
-        # Cập nhật dữ liệu sản phẩm trong MongoDB
-        products_collection.update_one({'_id': product_id}, {'$set': product})
-        return redirect(url_for('product_list'))
-    return render_template('edit_product.html', product=product)
+@product_bp.route('/update-product', methods=['POST'])
+def update_product():
+    # Lấy giá trị từ form
+    product_id_edit = request.form['product_id_edit']
+    name_edit = request.form['name_edit']
+    category_edit = request.form['category_edit']
+    brand_edit = request.form['brand_edit']
+    price_edit = int(request.form['price_edit'])
+    stock_edit = int(request.form['stock_edit'])
+    supplier_id_edit = request.form['supplier_id_edit']
+    description_edit = request.form['description_edit']
+
+    # Cập nhật sản phẩm trong MongoDB
+    products_collection.update_one(
+        {'product_id': product_id_edit},
+        {'$set': {
+            'name': name_edit,
+            'category': category_edit,
+            'brand': brand_edit,
+            'price': price_edit,
+            'stock': stock_edit,
+            'supplier_id': supplier_id_edit,
+            'description': description_edit
+        }}
+    )
+    return redirect(url_for('product_bp.product_list'))
 
 @product_bp.route('/delete_product/<product_id>', methods=['POST'])
 def delete_product(product_id):

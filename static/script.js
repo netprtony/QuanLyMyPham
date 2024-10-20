@@ -29,3 +29,13 @@ function editLocation(location_id, city, postal_code, address, country, contact_
 function deleteCustomer() {
     return confirmDeleteCustomer = confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');
 }
+function editProduct(product_id, name, category, brand, price, stock, supplier_id, description) {
+    document.getElementById('product_id_edit').value = product_id;
+    document.getElementById('name_edit').value = name;
+    document.getElementById('category_edit').value = category;
+    document.getElementById('brand_edit').value = brand;
+    document.getElementById('price_edit').value = price;
+    document.getElementById('stock_edit').value = stock;
+    document.getElementById('supplier_id_edit').value = supplier_id;
+    document.getElementById('description_edit').value = description;
+}
