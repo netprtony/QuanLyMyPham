@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, make_response
 import csv, json
+import io
 from pymongo import MongoClient
 client = MongoClient('mongodb://localhost:27017/')
 db = client['QL_CosmeticsStore']
@@ -161,3 +162,44 @@ def import_json():
 
     flash('Dữ liệu JSON đã được import thành công', 'success')
     return redirect(url_for('customer_bp.customer_list'))
+
+
+@customer_bp.route('/export-csv', methods=['GET'])
+def export_csv():
+    # Lấy danh sách khách hàng từ database
+    customers = customers_collection.find()
+
+    # Tạo một đối tượng BytesIO để ghi dữ liệu CSV vào
+    output = io.BytesIO()
+
+    # Tạo writer CSV từ BytesIO với delimiter là dấu phẩy
+    writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+    # Ghi tiêu đề cột
+    writer.writerow(['STT', 'Mã', 'Tên', 'Giới tính', 'Tuổi', 'Địa chỉ', 'Số điện thoại', 'Email', 'Mức độ'])
+
+    # Ghi dữ liệu khách hàng vào CSV
+    for i, customer in enumerate(customers, 1):
+        customer_dict = dict(customer)  # Chuyển đối tượng MongoDB thành từ điển
+
+        writer.writerow([
+            i,
+            customer_dict.get('customer_id', ''),
+            customer_dict.get('name', ''),
+            customer_dict.get('gender', ''),
+            customer_dict.get('age', ''),
+            f"{customer_dict.get('address', {}).get('street', '')}, {customer_dict.get('address', {}).get('city', '')}, {customer_dict.get('address', {}).get('postal_code', '')}",
+            customer_dict.get('phone', ''),
+            customer_dict.get('email', ''),
+            customer_dict.get('role', '')
+        ])
+
+    # Đặt con trỏ về đầu của BytesIO để đảm bảo đọc từ đầu
+    output.seek(0)
+
+    # Tạo response từ BytesIO
+    response = make_response(output.getvalue().decode('utf-8'))
+    response.headers['Content-Disposition'] = 'attachment; filename=customers.csv'
+    response.headers['Content-Type'] = 'text/csv; charset=utf-8'
+    
+    return response

@@ -31,6 +31,32 @@ def add_location():
         # Thêm khách hàng vào MongoDB
         location_collection.insert_one(location_data)
         return redirect(url_for('location_bp.location_list'))
+
+#Sửa---------------------------------------------------------
+@location_bp.route('/update_location', methods=['POST'])
+def update_location():
+    location_id_edit = request.form['location_id_edit']
+    city_edit = request.form['city_edit']
+    postal_code_edit = request.form['postal_code_edit']
+    address_edit = request.form['address_edit']
+    country_edit = request.form['country_edit']
+    contact_number_edit = request.form['contact_number_edit']
+    type_edit = request.form['type_edit']
+
+    # Cập nhật khách hàng trong MongoDB
+    location_collection.update_one(
+        {'location_id': location_id_edit},
+        {'$set': {
+            'city': city_edit,
+            'postal_code': postal_code_edit,
+            'address': address_edit,
+            'country': country_edit,
+            'contact_number': contact_number_edit,
+            'type': type_edit
+        }}
+    )
+    return redirect(url_for('location_bp.location_list'))
+
     
 #Xóa-------------------------------------------------------
 @location_bp.route('/delete_location/<location_id>', methods=['POST'])

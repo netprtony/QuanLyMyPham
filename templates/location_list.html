@@ -38,7 +38,7 @@ Quản Lý Địa Điểm Khách Hàng
                             <td>{{ location.type }}</td>  <!-- Hiển thị type -->
                             <td>
                                 <div class="row">
-                                    <button type="button" class="btn btn-warning col-5" data-bs-toggle="modal" data-bs-target="#editLocation" onclick="">
+                                    <button type="button" class="btn btn-warning col-5" data-bs-toggle="modal" data-bs-target="#editLocation" onclick="editLocation('{{ location['location_id'] }}', '{{ location['city'] }}','{{ location['postal_code'] }}','{{ location['address'] }}','{{ location['country'] }}','{{ location['contact_number'] }}','{{ location['type'] }}')">
                                         Sửa
                                     </button>
                                     <form class="col-5" action="{{ url_for('location_bp.delete_location', location_id=location['location_id']) }}" method="POST" style="display:inline;">
@@ -95,6 +95,53 @@ Quản Lý Địa Điểm Khách Hàng
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
                     <button type="submit" class="btn btn-primary" form="locationAddForm">Thêm Địa Điểm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editLocation" tabindex="-1" aria-labelledby="editlocationLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editlocationLabel">Cập Nhật Địa Điểm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="locationEditForm" action="{{ url_for('location_bp.update_location') }}" method="POST">
+                        <div class="form-group">
+                            <label for="location_id_edit" class="form-label">Mã Địa Điểm</label>
+                            <input type="text" class="form-control" id="location_id_edit" name="location_id_edit" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="city_edit">Thành phố:</label>
+                            <input type="text" class="form-control" name="city_edit" id="city_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postal_code_edit">Mã bưu điện:</label>
+                            <input type="text" class="form-control" name="postal_code_edit" id="postal_code_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address_edit">Address:</label>
+                            <input type="address" class="form-control" name="address_edit" id="address_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country_edit">Quốc gia:</label>
+                            <input type="text" class="form-control" name="country_edit" id="country_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_number_edit">Liên hệ:</label>
+                            <input type="text" class="form-control" name="contact_number_edit" id="contact_number_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type_edit">Loại:</label>
+                            <input type="text" class="form-control" name="type_edit" id="type_edit" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                    <button type="submit" class="btn btn-primary" form="locationEditForm">Lưu Thay Đổi</button>
                 </div>
             </div>
         </div>
