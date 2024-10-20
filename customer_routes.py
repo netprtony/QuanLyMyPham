@@ -5,6 +5,7 @@ from pymongo import MongoClient
 client = MongoClient('mongodb://localhost:27017/')
 db = client['QL_CosmeticsStore']
 customers_collection = db['Customers']
+orders_collection = db['Orders']
 customer_bp = Blueprint('customer_bp', __name__)
 
 @customer_bp.route('/customer-list')
@@ -50,12 +51,13 @@ def add_customer():
 @customer_bp.route('/delete_customer/<customer_id>', methods=['POST'])
 def delete_customer(customer_id):
     # Xóa khách hàng từ MongoDB
-    result = customers_collection.delete_one({'customer_id': customer_id})
-
-    if result.deleted_count > 0:
+    result_customer = customers_collection.delete_one({'customer_id': customer_id})
+    # Xóa tất cả đơn hàng của khách hàng
+    if result_customer.deleted_count > 0 :
         return redirect(url_for('customer_bp.customer_list'))  # Chuyển hướng về danh sách khách hàng
     else:
         return "Không tìm thấy khách hàng với ID này", 404
+
 #Sửa
 @customer_bp.route('/update_customer', methods=['POST'])
 def update_customer():

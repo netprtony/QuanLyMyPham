@@ -62,7 +62,7 @@
                                     Sửa
                                 </button>
                                 <form class="col-5" action="{{ url_for('customer_bp.delete_customer', customer_id=customer['customer_id']) }}" method="POST" style="display:inline;">
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?');">Xóa</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return deleteCustomer()">Xóa</button>
                                 </form>
                             </td>
                         </tr>
@@ -232,11 +232,11 @@
                     </div>
                 </div>
             </div>
-
-            
-
         </div>
     </div>
+
+
+    
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             <div class="alert-container">
