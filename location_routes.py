@@ -68,3 +68,14 @@ def delete_location(location_id):
         return redirect(url_for('location_bp.location_list'))  # Chuyển hướng về danh sách khách hàng
     else:
         return "Không tìm thấy khách hàng với ID này", 404
+    
+
+@location_bp.route('/filter-locations', methods=['GET'])
+def filter_locations():
+    city = request.args.get('city-select')
+    if city:
+        filtered_locations = location_collection.find({"city": city})
+    else:
+        filtered_locations = location_collection.find()  # Nếu không có thành phố, lấy tất cả
+
+    return render_template('location_list.html', locations=filtered_locations)

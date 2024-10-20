@@ -7,8 +7,27 @@ Quản Lý Địa Điểm Khách Hàng
         <div class="header">
             <h2>Quản Lý Địa Điểm Khách Hàng</h2>
         </div>
-        <div class="actions">
-            <button class="btn-add" data-bs-toggle="modal" data-bs-target="#addLocation">Thêm Địa Điểm</button>
+        <div class="actions row">
+            <button class="btn-add col-1" data-bs-toggle="modal" data-bs-target="#addLocation">Thêm Địa Điểm</button>
+            
+            <form class="col" id="locationFilterForm" action="/filter-locations" method="GET">
+                <div class="form-group">
+                    <label for="city-select">Chọn Thành Phố:</label>
+                    <select id="city-select" name="city-select" class="form-control" required>
+                        <option value="">--Chọn Thành Phố--</option>
+                        <option value="Ho Chi Minh City">Ho Chi Minh City</option>
+                        <option value="Ha Noi">Hà Nội</option>
+                        <option value="Da Nang">Đà Nẵng</option>
+                        <option value="Hue">Huế</option>
+                        <option value="Can Tho">Cần Thơ</option>
+                        <option value="Nha Trang">Nha Trang</option>
+                        <option value="Binh Duong">Bình Dương</option>
+                        <option value="Vung Tau">Vũng Tàu</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Lọc</button>
+            </form>
+
         </div>
         <div class="list">
             <table class="table">
