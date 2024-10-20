@@ -195,29 +195,7 @@
                 </div>
             </div>
 
-            <!-- Modal Import từ CSV -->
-            <div class="modal fade" id="importCSVModal" tabindex="-1" aria-labelledby="importCSVLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="importCSVLabel">Import Dữ Liệu từ CSV</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="{{ url_for('customer_bp.import_csv') }}" method="POST" enctype="multipart/form-data">
-                                <div class="mb-3">
-                                    <label for="csvFile" class="form-label">Chọn file CSV:</label>
-                                    <input type="file" class="form-control" id="csvFile" name="csvFile" accept=".csv" required>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
-                                    <button type="submit" class="btn btn-primary">Import CSV</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 
