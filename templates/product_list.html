@@ -7,10 +7,35 @@
         <div class="header">
             <h2>Danh Mục Mỹ Phẩm</h2>
         </div>
-        <div class="actions">
-            <button class="btn-add col-2 p-0" data-bs-toggle="modal" data-bs-target="#addProductModal">Thêm Sản Phẩm</button>
+        <div class="actions row">
+            <button class="btn-add col-1 p-0" data-bs-toggle="modal" data-bs-target="#addProductModal">Thêm Sản Phẩm</button>
+            <div class="col-2">
+                <form method="GET" action="/products">
+                    <div class="form-group">
+                        <label for="category">Chọn Chủng Loại:</label>
+                        <select name="category" id="category" class="form-control">
+                            <option value="">Tất Cả</option>
+                            <option value="Skincare">Skincare</option>
+                            <option value="Cosmetics">Cosmetics</option>
+                            <option value="Haircare">Haircare</option>
+                            <option value="Detoxss">Detoxss</option>
+                            <option value="Exfoliating Products">Exfoliating Products</option>
+                            <option value="Anti-aging Products">Anti-aging Products</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Lọc</button>
+                </form>
+            </div>
+            <div class="col-2">
+                <div class="list-group">
+                    <a href="?filter=most_selling" class="list-group-item list-group-item-action">Sản Phẩm Bán Nhiều Nhất</a>
+                    <a href="?filter=least_selling" class="list-group-item list-group-item-action">Sản Phẩm Bán Ít Nhất</a>
+                    <a href="?filter=unsold" class="list-group-item list-group-item-action">Sản Phẩm Chưa Được Mua</a>
+                  </div>
+            </div>
         </div>
-        <div class="list">
+        
+        <div class="product-list">
             <table class="table">
                 <thead>
                     <tr>

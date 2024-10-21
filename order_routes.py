@@ -158,3 +158,21 @@ def update_order(order_id):
         return render_template('top_customers.html', customer_info=customer_info)
 
     return redirect(url_for('order_bp.order_list'))
+
+@order_bp.route('/orders', methods=['GET'])
+def list_orders_by_status():
+    # Lấy trạng thái đơn hàng từ query parameter
+    order_status = request.args.get('status')
+    
+    # Kiểm tra nếu trạng thái có được cung cấp
+    if order_status:
+        # Lọc đơn hàng theo trạng thái
+        orders = orders_collection.find({"status": order_status})
+    else:
+        # Nếu không có trạng thái được cung cấp, trả về tất cả đơn hàng
+        orders = orders_collection.find()
+
+    # Chuyển đổi kết quả thành danh sách
+    orders_list = list(orders)
+
+    return render_template('order_list.html', orders=orders_list)
