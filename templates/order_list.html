@@ -59,7 +59,7 @@
             <tbody>
                 {% for order in orders %}
                 <tr>
-                    <td>{{ index + 1 }}</td>
+                    <td>{{ loop.index }}</td>
                     <td class="textbox-id" onclick="window.location.href='/order-detail/{{ order['order_id'] }}'">
                         {{ order['order_id'] }}
                     </td>
