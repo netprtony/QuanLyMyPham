@@ -1,37 +1,169 @@
 {% extends "layout.html" %}
 {% block title %}
-    Giao Hàng
+Quản Lý Địa Điểm Khách Hàng
 {% endblock %}
 {% block content %}
-    <div class="delivery-form">
-        <div class="form-group">
-            <label for="selected_customer">Chọn Khách Hàng:</label>
-            <select id="selected_customer" name="selected_customer" required class="form-control">
-                {% for customer in customers %}
-                    <option value="{{ customer._id }}">{{ customer.name }} - {{ customer.phone }} - {{ customer.email }}</option>
-                {% endfor %}
-            </select>
+    <div class="management">
+        <div class="header">
+            <h2>Quản Lý Địa Điểm Giao Hàng</h2>
         </div>
-        <div class="form-group">
-            <label for="selected_location">Chọn Vị Trí Giao Hàng:</label>
-            <select id="selected_location" name="selected_location" required class="form-control">
-                {% for location in locations %}
-                    <option value="{{ location.location_id }}">{{ location.address }}</option>
-                {% endfor %}
-            </select>
+        <div class="actions row">
+            <button class="btn-add col-1" data-bs-toggle="modal" data-bs-target="#addLocation">Thêm Địa Điểm</button>
+
+            <form class="col" id="locationFilterForm" action="/filter-locations" method="GET">
+                <div class="form-group">
+                    <label for="city-select">Chọn Thành Phố:</label>
+                    <select id="city-select" name="city-select" class="form-control" required>
+                        <option value="">--Chọn Thành Phố--</option>
+                        <option value="Ho Chi Minh City">Ho Chi Minh City</option>
+                        <option value="Ha Noi">Hà Nội</option>
+                        <option value="Da Nang">Đà Nẵng</option>
+                        <option value="Hue">Huế</option>
+                        <option value="Can Tho">Cần Thơ</option>
+                        <option value="Nha Trang">Nha Trang</option>
+                        <option value="Binh Duong">Bình Dương</option>
+                        <option value="Vung Tau">Vũng Tàu</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Lọc</button>
+            </form>
+
         </div>
-        <div class="form-group">
-            <label for="selected_delivery_method">Chọn Phương Thức Giao Hàng:</label>
-            <select id="selected_delivery_method" name="selected_delivery_method" required class="form-control">
-                {% for method in delivery_methods %}
-                    <option value="{{ method }}">{{ method }}</option>
-                {% endfor %}
-            </select>
+        <div class="list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Mã</th>
+                        <th>Thành phố</th>
+                        <th>Địa chỉ</th>
+                        <th>Mã bưu điện</th>
+                        <th>Liên hệ</th>
+                        <th>Quốc gia</th>
+                        <th>Loại</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for location in locations %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ location.location_id }}</td>
+                            <td>{{ location.city }}</td>  <!-- Hiển thị city -->
+                            <td>{{ location.address }}</td>
+                            <td>{{ location.postal_code }}</td>
+                            <td>{{ location.contact_number }}</td>
+                            <td>{{ location.country }}</td>
+                            <td>{{ location.type }}</td>  <!-- Hiển thị type -->
+                            <td>
+                                <div class="row">
+                                    <button type="button" class="btn btn-warning col-5" data-bs-toggle="modal" data-bs-target="#editLocation" onclick="editLocation('{{ location['location_id'] }}', '{{ location['city'] }}','{{ location['postal_code'] }}','{{ location['address'] }}','{{ location['country'] }}','{{ location['contact_number'] }}','{{ location['type'] }}')">
+                                        Sửa
+                                    </button>
+                                    <form class="col-5" action="{{ url_for('location_bp.delete_location', location_id=location['location_id']) }}" method="POST" style="display:inline;">
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa địa điểm này không?');">Xóa</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-        <div class="form-group">
-            <label for="delivery_address">Địa Chỉ Giao Hàng:</label>
-            <input type="text" id="delivery_address" name="delivery_address" required class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">Tiếp Tục</button>
     </div>
+
+    <div class="modal fade" id="addLocation" tabindex="-1" aria-labelledby="addlocationLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addlocationLabel">Thêm Địa Điểm Giao Hàng</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="locationAddForm" action="{{ url_for('location_bp.add_location') }}" method="POST">
+                        <div class="form-group">
+                            <label for="location_id" class="form-label">Mã Địa Điểm</label>
+                            <input type="text" class="form-control" id="location_id" name="location_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Thành phố:</label>
+                            <input type="text" class="form-control" name="city" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postal_code">Mã bưu điện:</label>
+                            <input type="text" class="form-control" name="postal_code" id="postal_code" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <input type="address" class="form-control" name="address" id="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Quốc gia:</label>
+                            <input type="text" class="form-control" name="country" id="country" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_number">Liên hệ:</label>
+                            <input type="text" class="form-control" name="contact_number" id="contact_number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Loại:</label>
+                            <input type="text" class="form-control" name="type" id="type" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                    <button type="submit" class="btn btn-primary" form="locationAddForm">Thêm Địa Điểm Giao Hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editLocation" tabindex="-1" aria-labelledby="editlocationLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editlocationLabel">Cập Nhật Địa Điểm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="locationEditForm" action="{{ url_for('location_bp.update_location') }}" method="POST">
+                        <div class="form-group">
+                            <label for="location_id_edit" class="form-label">Mã Địa Điểm</label>
+                            <input type="text" class="form-control" id="location_id_edit" name="location_id_edit" required readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="city_edit">Thành phố:</label>
+                            <input type="text" class="form-control" name="city_edit" id="city_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postal_code_edit">Mã bưu điện:</label>
+                            <input type="text" class="form-control" name="postal_code_edit" id="postal_code_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address_edit">Address:</label>
+                            <input type="address" class="form-control" name="address_edit" id="address_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country_edit">Quốc gia:</label>
+                            <input type="text" class="form-control" name="country_edit" id="country_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_number_edit">Liên hệ:</label>
+                            <input type="text" class="form-control" name="contact_number_edit" id="contact_number_edit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type_edit">Loại:</label>
+                            <input type="text" class="form-control" name="type_edit" id="type_edit" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Trở lại</button>
+                    <button type="submit" class="btn btn-primary" form="locationEditForm">Lưu Thay Đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

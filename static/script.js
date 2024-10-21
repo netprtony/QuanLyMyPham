@@ -47,3 +47,37 @@ function editSupplier(supplier_id, name, phone, email, address) {
     document.getElementById('address_edit').value = address;
 
 }
+
+document.getElementById('backupForm').onsubmit = function(e) {
+    e.preventDefault();
+    fetch('/backup-restore', {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(this))
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok: " + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => alert(data.message))
+    .catch(error => alert('Error: ' + error));
+};
+
+document.getElementById('restoreForm').onsubmit = function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);  // Lấy dữ liệu từ form
+    fetch('/backup-restore', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok: " + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => alert(data.message))
+    .catch(error => alert('Error: ' + error));
+};
+

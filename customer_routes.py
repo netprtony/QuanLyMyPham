@@ -13,6 +13,43 @@ def customer_list():
     customers = customers_collection.find()
     return render_template('customer_list.html', customers=customers, enumerate=enumerate)
 
+@customer_bp.route('/top-customers')
+def top_customers():
+    # Aggregation: Lọc các đơn hàng có trạng thái 'Delivered' và đếm số lần giao thành công cho mỗi khách hàng
+    pipeline = [
+        {"$match": {"status": "Delivered"}},
+        {"$group": {
+            "_id": "$customer_id",
+            "total_deliveries": {"$sum": 1}
+        }},
+        {"$match": {"total_deliveries": {"$gt": 0}}},  # Chỉ lấy những khách hàng có giao hàng
+        {"$lookup": {
+            "from": "Customers",
+            "localField": "_id",
+            "foreignField": "customer_id",
+            "as": "customer_info"
+        }},
+        {"$unwind": "$customer_info"},  # Giải nén thông tin khách hàng từ mảng
+        {"$project": {
+            "_id": 0,
+            "customer_id": "$_id",
+            "name": "$customer_info.name",
+            "phone": "$customer_info.phone",
+            "address": "$customer_info.address.street",
+            "total_deliveries": 1
+        }},
+        {"$sort": {"total_deliveries": -1}}  # Sắp xếp theo số lần giao hàng giảm dần
+    ]
+
+    top_customers = list(orders_collection.aggregate(pipeline))
+    return render_template('top_customers.html', customers=top_customers)
+
+@customer_bp.route('/customer-orders/<customer_id>')
+def get_customer_orders(customer_id):
+    # Truy vấn danh sách đơn hàng của khách hàng từ collection 'Orders'
+    orders = orders_collection.find({"customer_id": customer_id, "status": "Delivered"})
+    return render_template('customer_orders.html', orders=orders, customer_id=customer_id)
+
 
 @customer_bp.route('/edit-customer/<customer_id>',methods=['POST'])
 def get_customer(customer_id):

@@ -1,17 +1,50 @@
 {% extends "layout.html" %}
-{% block title %}
-    Danh Sách Đơn Hàng
-{% endblock %}
+{% block title %}Danh Sách Đơn Hàng{% endblock %}
+
 {% block content %}
 <div class="management">
     <div class="header">
-        <h2> Danh Sách Đơn Hàng</h2>
+        <h2>Danh Sách Đơn Hàng</h2>
     </div>
 
     <div class="actions">
-        <a href="/add-order" class="btn btn-primary">Thêm Đơn Hàng</a>
+        <a  href="/add-order" class="btn btn-primary">Thêm Đơn Hàng</a>
     </div>
+
     <div class="list">
+        <form method="GET" action="/order-list">
+            <div class="form-row">
+                <label for="start_date">Ngày bắt đầu:</label>
+                <input type="date" id="start_date" name="start_date" value="{{ start_date.strftime('%Y-%m-%d') if start_date else '' }}">
+
+                <label for="end_date">Ngày kết thúc:</label>
+                <input type="date" id="end_date" name="end_date" value="{{ end_date.strftime('%Y-%m-%d') if end_date else '' }}">
+
+                <label for="customer_id">Mã Khách Hàng:</label>
+                <input type="text" id="customer_id" name="customer_id">
+
+                <label for="total_price">Tổng Giá:</label>
+                <select name="total_price" id="total_price">
+                    <option value="">Tất cả</option>
+                    <option value="0">Lớn hơn 0</option>
+                    <option value="500000">Lớn hơn 500000</option>
+                    <option value="1000000">Lớn hơn 1000000</option>
+                    <option value="2000000">Lớn hơn 2000000</option>
+                </select>
+
+                <label for="status">Trạng Thái:</label>
+                <select name="status" id="status">
+                    <option value="" selected>Tất cả</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Shipped">Shipped</option>
+                    <option value="Processing">Processing</option>
+                    <option value="Pending" >Pending</option>
+                </select>
+
+                <button type="submit" class="btn btn-primary btn-query">Truy vấn</button>
+            </div>
+        </form>
+
         <table class="table">
             <thead>
                 <tr>
@@ -26,7 +59,7 @@
             <tbody>
                 {% for index, order in enumerate(orders) %}
                 <tr>
-                    <td>{{ index + 1 }}</td> 
+                    <td>{{ index + 1 }}</td>
                     <td class="textbox-id" onclick="window.location.href='/order-detail/{{ order['order_id'] }}'">
                         {{ order['order_id'] }}
                     </td>
@@ -38,7 +71,6 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div>        
+    </div>
 </div>
-
 {% endblock %}

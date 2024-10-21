@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% block title %}Danh Sách Khách Hàng Nhận Hàng Nhiều Nhất{% endblock %}
+{% block content %}
+<div class="management">
+    <div class="header">
+        <h2>Danh Sách Khách Hàng Nhận Hàng Nhiều Nhất</h2>
+    </div>
+
+    <div class="actions">
+
+    </div>
+
+    <div class="list">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã Khách Hàng</th>
+                    <th>Tên Khách Hàng</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Địa Chỉ</th>
+                    <th>Tổng Đơn Giao Thành Công</th>
+                </tr>
+            </thead>
+          <tbody>
+            {% if customers %}
+                {% for customer in customers %}
+                <tr>
+                    <td>{{ loop.index }}</td>  <!-- Số thứ tự bắt đầu từ 1 -->
+                   <td>
+                        <a href="/customer-orders/{{ customer['customer_id'] }}">{{ customer['customer_id'] }}</a>
+                    </td>
+                    <td>{{ customer['name'] }}</td>
+                    <td>{{ customer['phone'] }}</td>
+                    <td>{{ customer['address'] }}</td>
+                    <td>{{ customer['total_deliveries'] }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6" class="text-center">Không tìm thấy khách hàng nào.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

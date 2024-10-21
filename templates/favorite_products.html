@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block title %}Sản Phẩm Khách Hàng Ưa Thích{% endblock %}
+{% block content %}
+<div class="management">
+    <div class="header">
+        <h2>Sản Phẩm Khách Hàng Ưa Thích</h2>
+    </div>
+
+    <div class="list">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã Khách Hàng</th>
+                    <th>Tên Khách Hàng</th>
+                    <th>Mã Sản Phẩm</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Loại Sản Phẩm</th>
+                    <th>Số Lượng Mua</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if favorite_products %}
+                    {% for product in favorite_products %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ product.customer_id }}</td>
+                        <td>{{ product.customer_name }}</td>
+                        <td>{{ product.product_id }}</td>
+                        <td>{{ product.product_name }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.total_quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center">Không có sản phẩm ưa thích nào.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
